@@ -12,12 +12,12 @@ enableEmoji = true
 noClasses = false
 
 [params]
-author = "DadWritesTech"
+author = "Dad Writes Tech"
 # license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
-description = "A personal Blog."
-keywords = "blog,technicalwriter,personal"
-info = ["Technical Writer", "Dreamer"]
-avatarURL = "images/avatar.jpg"
+description = "A Personal Blog."
+keywords = "blog, technicalwriter, personal"
+info = ["Technical Writer", "Dad", "newb Gamer"]
+#avatarURL = "images/avatar.jpg"
 #gravatar = "john.doe@example.com"
 dateFormat = "January 2, 2006"
 since = 2014
