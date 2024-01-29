@@ -1,7 +1,7 @@
 baseURL: '/blog'
 languageCode: en-us
 title: Dad Writes Tech
-theme: hugo-PaperMod
+theme: PaperMod
 paginate: 5
 
 
