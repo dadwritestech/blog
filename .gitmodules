@@ -1,3 +1,7 @@
 [submodule "DadWritesTech/themes/hugo-PaperMod"]
 	path = DadWritesTech/themes/hugo-PaperMod
 	url = https://github.com/adityatelange/hugo-PaperMod.git
+[submodule "DadWritesTech/public"]
+	path = DadWritesTech/public
+	url = https://github.com/dadwritestech/dad-writes-tech.github.io.git
+	branch = main
