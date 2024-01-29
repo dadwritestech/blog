@@ -1,4 +1,4 @@
-baseURL: 'https://dad-writes-tech.github.io/'
+baseURL: ''
 languageCode: en-us
 title: Dad Writes Tech
 theme: hugo-PaperMod
