@@ -1,4 +1,4 @@
-baseURL: 'blog/'
+baseURL: '/'
 languageCode: en-us
 title: Dad Writes Tech
 theme: hugo-PaperMod
