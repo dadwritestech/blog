@@ -3,7 +3,7 @@ title = "About me"
 description = "A lil bit bout me self"
 date = "2024-01-30"
 aliases = ["about-me"]
-author = ["DadWritesTech"]
+author = DadWritesTech
 +++
 
 Hey there, and a big warm welcome to my little corner of the internet! I'm your friendly neighborhood Technical Writer, with a dash of passion for demystifying the often tangled world of tech. Picture me as your guide through the maze, turning the cryptic into the clear with just a flick of the pen (or a click of the keyboard, to be more 21st century about it).
