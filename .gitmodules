@@ -2,3 +2,6 @@
 	path = DadWritesTech/public
 	url = https://github.com/dadwritestech/dad-writes-tech.github.io.git
 	branch = main
+[submodule "DadWritesTech/themes/hugo-coder"]
+	path = DadWritesTech/themes/hugo-coder
+	url = https://github.com/luizdepra/hugo-coder.git
