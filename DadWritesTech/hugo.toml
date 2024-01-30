@@ -1,4 +1,4 @@
-baseURL = "/blog"
+baseURL = "https://www.dad-writes-tech.com/"
 title = "Dad Writes Tech"
 theme = "hugo-coder"
 languageCode = "en"
@@ -127,11 +127,11 @@ series = "series"
 tag = "tags"
 author = "authors"
 
-[[params.social]]
-name = "Github"
-icon = "fa fa-2x fa-github"
-weight = 1
-url = "https://github.com/dadwritestech"
+#[[params.social]]
+#name = "Github"
+#icon = "fa fa-2x fa-github"
+#weight = 1
+#url = "https://github.com/dadwritestech"
 
 
 
