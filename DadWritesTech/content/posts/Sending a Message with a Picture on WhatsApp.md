@@ -5,7 +5,7 @@ description: "A short write up on how to send pictures using WhatsApp."
 tags: ["techguide"]
 categories: ["TechGuides"]
 series: ["TechGuides"]
-ShowToc: false
+ShowToc: true
 TocOpen: true
 
 ---
@@ -37,7 +37,7 @@ Enhance your WhatsApp conversations by sharing pictures. Whether capturing a mom
 
 ### iPhone Instructions
 
-1. Open WhatsApp: Tap the WhatsApp icon to open the app.
+1. Open WhatsApp: Tap the WhatsApp icon on your device to start the app.
 2. Choose a Chat:
    1. Scroll through your chats to find an existing conversation.
    2. To start a new chat, tap the **+** icon at the top right, then select **New Chat** and choose a contact.
