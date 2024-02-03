@@ -33,7 +33,7 @@ A Retail Loyalty Program is a structured marketing strategy designed by retailer
 
 ## The Mutual Benefit
 
-For customers, the appeal is clear: save money, gain rewards, and receive a personalized shopping experience. For retailers, loyalty programs offer invaluable customer data, increase retention rates, Encourages brand advocacy, and boost overall sales. It's a win-win situation where your loyalty to a brand is recognized and rewarded.
+For customers, the appeal is clear: save money, gain rewards, and receive a personalized shopping experience. For retailers, loyalty programs offer invaluable customer data, increase retention rates, encourages brand advocacy, and boost overall sales. It's a win-win situation where your loyalty to a brand is recognized and rewarded.
 
 ## Considerations for Businesses
 
