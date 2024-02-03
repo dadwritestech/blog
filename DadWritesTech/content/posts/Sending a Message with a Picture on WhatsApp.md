@@ -20,6 +20,7 @@ Enhance your WhatsApp conversations by sharing pictures. Whether capturing a mom
 - [Image Quality](#image-quality)
   - [Selecting Image Quality (Optional for Android and iPhone)](#selecting-image-quality-optional-for-android-and-iphone)
   - [Using the Attachment Feature](#using-the-attachment-feature)
+- [Special Features](#special-features)
 
 ### Android Instructions
 
@@ -80,9 +81,15 @@ Choose Your Image: Browse your gallery and select the image you wish to send. Th
 WhatsApp lets you send files as large as 2GB. For smoother sending and receiving of big files, it's best to connect to a strong Wi-Fi network.
 {{< /notice >}}
 
+
+### Special Features
+
+WhatsApp enhances your photo sharing experience with a suite of editing tools accessible after selecting or capturing a photo. These tools allow you to crop or rotate images, personalize with stickers or emojis, and add text or freehand drawings. You can apply these edits individually or combine them for creative effects.
+
+Additionally, WhatsApp supports sending multiple photos at once (up to 100 on Android and 30 on iPhone as of latest update), with the HD setting applying to all selected images. For artistic touches, swiping up on a chosen photo reveals a range of filters, offering various aesthetic enhancements.
+
 By understanding these options, you can optimize your image sharing on WhatsApp, ensuring your pictures look their best based on your needs and the recipient's viewing context.
 
 Don't hesitate to try out these features to make your chats more vibrant and personal!
-
 
 [Back to Top](#top)
