@@ -76,6 +76,10 @@ For times when you want to send images in their original quality, using the atta
 Choose Your Image: Browse your gallery and select the image you wish to send. This method does not compress the image, preserving its original quality.
 2. Send the Image: After selecting your image, you can add a caption if you like, then send it. Images sent this way are ideal for ensuring the highest quality, suitable for detailed viewing or printing.
 
+{{< notice info >}}
+WhatsApp lets you send files as large as 2GB. For smoother sending and receiving of big files, it's best to connect to a strong Wi-Fi network.
+{{< /notice >}}
+
 By understanding these options, you can optimize your image sharing on WhatsApp, ensuring your pictures look their best based on your needs and the recipient's viewing context.
 
 Don't hesitate to try out these features to make your chats more vibrant and personal!
