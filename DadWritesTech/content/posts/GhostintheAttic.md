@@ -8,6 +8,7 @@ categories: ["Short-Stories"]
 series: ["Short-Stories"]
 ShowToc: true
 TocOpen: true
+SEO: ["Shortstories"]
 ---
 
 Max was a 12-year-old boy who lived with his father. He was very healthy, a bit too healthy, one can say. He was round like a tomato, and that's what his classmates used to call him. He wasn't very popular and didn't have any friends. They had recently moved to a new city where his father got a new job and had bought a new house on the outskirts of the town because it was a bit close to his work and Max's new School.

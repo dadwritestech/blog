@@ -7,7 +7,7 @@ categories: ["TechGuides"]
 series: ["TechGuides"]
 ShowToc: true
 TocOpen: true
-
+SEO: ["Tech-news", "TechWriting", "WhatsApp"]
 ---
 
 Enhance your WhatsApp conversations by sharing pictures. Whether capturing a moment on the fly or sharing a saved memory, you can make your conversations more personal and engaging. Additionally, you can choose the quality of the images you send, balancing between clarity and data usage.

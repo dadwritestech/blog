@@ -7,6 +7,7 @@ categories: ["General"]
 series: ["General"]
 ShowToc: true
 TocOpen: true
+SEO: ["Tech-news", "loyalty", "Retail", "Program"]
 ---
 
 Ever wondered why some stores ask you to sign up for their "exclusive" clubs or offer you a card that promises rewards? Welcome to the world of Retail Loyalty Programs, a popular strategy businesses use to keep customers coming back for more.
