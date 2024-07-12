@@ -36,12 +36,12 @@ hideColorSchemeToggle = false
 # Series see also post count
 maxSeeAlsoItems = 5
 # Custom CSS
-customCSS = []
+customCSS = ["css/custom-calculator.css"]
 # Custom SCSS, file path is relative to Hugo's asset folder (default: {your project root}/assets)
 customSCSS = []
 
 # Custom JS
-customJS = []
+customJS = ["js/custom-calculator.js"]
 
 # Custom remote JS files
 customRemoteJS = []
@@ -158,12 +158,6 @@ name = "Projects"
 weight = 3
 url = "projects/"
 
-
-[[languages.en.menu.main]]
-name = "Contact me"
-weight = 6
-url = "contact/"
-
 [[languages.en.menu.main]]
 name = "Gaming"
 weight = 4
@@ -174,5 +168,27 @@ name = "Categories"
 weight = 5
 url = "/categories/"
 
+[[languages.en.menu.main]]
+name = "Annual Mileage Calculator"
+weight = 6
+url = "/annual-mileage-calculator/"
+
+[[languages.en.menu.main]]
+name = "Contact me"
+weight = 7
+url = "contact/"
+
 [markup.goldmark.renderer]
 unsafe= true
+
+[outputFormats]
+  [outputFormats.CSS]
+    mediaType = "text/css"
+    isPlainText = true
+  [outputFormats.JS]
+    mediaType = "text/javascript"
+    isPlainText = true
+
+[outputs]
+  home = ["HTML", "CSS", "JS"]
+
