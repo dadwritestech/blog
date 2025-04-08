@@ -170,8 +170,13 @@ weight = 5
 url = "/annual-mileage-calculator/"
 
 [[languages.en.menu.main]]
-name = "Contact me"
+name = "Pregnancy Contraction Timer"
 weight = 6
+url = "/contraction-timer/"
+
+[[languages.en.menu.main]]
+name = "Contact me"
+weight = 7
 url = "contact/"
 
 [markup.goldmark.renderer]

@@ -1,0 +1,320 @@
+{{/* layouts/shortcodes/contraction-timer.html */}}
+<style>
+    /* Same CSS as before */
+    .contraction-timer-body { /* Renamed body selector to avoid global conflicts */
+        font-family: sans-serif;
+        line-height: 1.6;
+        margin: 0; /* Body margins handled by Hugo theme */
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    .contraction-timer-container { /* Renamed container class */
+        max-width: 700px;
+        margin: 20px auto; /* Added margin */
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .contraction-timer-container h2 { /* Specificity for headings within timer */
+         text-align: center;
+         color: #5a4fcf;
+         margin-top: 0; /* Adjust as needed */
+    }
+    .timer-controls {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    #timerButton { /* IDs are unique, safe to keep */
+        padding: 15px 30px;
+        font-size: 1.2em;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #28a745; /* Green for start */
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+    #timerButton.timing {
+        background-color: #dc3545; /* Red for stop */
+    }
+    #timerButton:hover {
+        opacity: 0.9;
+    }
+    .timer-display {
+        margin-top: 20px;
+        font-size: 1.1em;
+    }
+    .timer-display p {
+        margin: 5px 0;
+    }
+    .timer-display span {
+        font-weight: bold;
+        color: #5a4fcf;
+    }
+    #historyTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    #historyTable th, #historyTable td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    #historyTable th {
+        background-color: #e9e7fd;
+        color: #333;
+    }
+    #historyTable tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    #clearHistoryButton {
+        display: block;
+        margin: 20px auto 0;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #6c757d;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+     #clearHistoryButton:hover {
+        background-color: #5a6268;
+     }
+     .no-history {
+        text-align: center;
+        color: #6c757d;
+        margin-top: 15px;
+     }
+</style>
+
+<div class="contraction-timer-container">
+    <h2>Contraction Timer</h2>
+
+    <div class="timer-controls">
+        <button id="timerButton">Start Contraction</button>
+        <div class="timer-display">
+            <p>Current Duration: <span id="currentDuration">00:00</span></p>
+            <p>Time Since Last Start: <span id="timeSinceLast">--:--</span></p>
+        </div>
+    </div>
+
+    <h2>Contraction History</h2>
+    <table id="historyTable">
+        <thead>
+            <tr>
+                <th>Start Time</th>
+                <th>Duration</th>
+                <th>Frequency (Start to Start)</th>
+            </tr>
+        </thead>
+        <tbody id="historyBody">
+            <tr id="no-history-row">
+               <td colspan="3" class="no-history">No contractions recorded yet.</td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="clearHistoryButton">Clear History</button>
+</div>
+
+<script>
+  // Wrap the JS in a function to avoid polluting global scope
+  // and ensure elements exist before running script
+  (function() {
+      // Ensure this code runs after the DOM is loaded, or place script at end
+      // If shortcode might load async or late, use DOMContentLoaded
+      // document.addEventListener('DOMContentLoaded', function() { ... });
+      // However, Hugo shortcodes usually render inline, so direct execution is fine.
+
+      // DOM Elements (assuming IDs are unique on the page)
+      const timerButton = document.getElementById('timerButton');
+      const currentDurationEl = document.getElementById('currentDuration');
+      const timeSinceLastEl = document.getElementById('timeSinceLast');
+      const historyBody = document.getElementById('historyBody');
+      const clearHistoryButton = document.getElementById('clearHistoryButton');
+      // IMPORTANT: Need to select the 'no history' row *within* the context if needed,
+      // but easier to just handle its display logic in updateHistoryTable
+      // const noHistoryRow = document.getElementById('no-history-row'); // Might be less reliable
+
+      // State Variables
+      let isTiming = false;
+      let startTime = null;
+      let lastStartTime = null;
+      let timerInterval = null;
+      let timeSinceLastInterval = null;
+      let contractions = []; // {startTime: Date, duration: Number, frequency: Number | null}
+
+      // --- Helper Functions ---
+      function formatTime(totalSeconds) {
+          if (totalSeconds === null || isNaN(totalSeconds)) return "--:--";
+          const minutes = Math.floor(totalSeconds / 60);
+          const seconds = Math.floor(totalSeconds % 60);
+          return `<span class="math-inline">\{String\(minutes\)\.padStart\(2, '0'\)\}\:</span>{String(seconds).padStart(2, '0')}`;
+      }
+
+      function formatTimestamp(date) {
+          if (!date) return "N/A";
+          const hours = String(date.getHours()).padStart(2, '0');
+          const minutes = String(date.getMinutes()).padStart(2, '0');
+          const seconds = String(date.getSeconds()).padStart(2, '0');
+          return `<span class="math-inline">\{hours\}\:</span>{minutes}:${seconds}`;
+      }
+
+      function updateDurationDisplay() {
+          if (!startTime) return;
+          const now = Date.now();
+          const elapsedSeconds = (now - startTime) / 1000;
+          if (currentDurationEl) currentDurationEl.textContent = formatTime(elapsedSeconds);
+      }
+
+      function updateTimeSinceLastDisplay() {
+          if (!lastStartTime) {
+               if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
+               return;
+          };
+          const now = Date.now();
+          const elapsedSeconds = (now - lastStartTime) / 1000;
+          if (timeSinceLastEl) timeSinceLastEl.textContent = formatTime(elapsedSeconds);
+      }
+
+      function updateHistoryTable() {
+          if (!historyBody) return; // Ensure element exists
+
+          // Clear existing rows
+          historyBody.innerHTML = '';
+
+          if (contractions.length === 0) {
+               // Add the 'no history' message row
+               const row = historyBody.insertRow();
+               const cell = row.insertCell();
+               cell.colSpan = 3;
+               cell.className = 'no-history'; // Use class for styling
+               cell.textContent = 'No contractions recorded yet.';
+          } else {
+              contractions.forEach((contraction, index) => {
+                  const row = historyBody.insertRow();
+
+                  const cellStartTime = row.insertCell();
+                  const cellDuration = row.insertCell();
+                  const cellFrequency = row.insertCell();
+
+                  cellStartTime.textContent = formatTimestamp(contraction.startTime);
+                  cellDuration.textContent = formatTime(contraction.duration);
+                  cellFrequency.textContent = index === 0 ? "N/A" : formatTime(contraction.frequency);
+              });
+          }
+      }
+
+      // --- Event Handlers ---
+      function handleTimerClick() {
+          // Ensure elements exist before proceeding
+          if (!timerButton || !currentDurationEl || !timeSinceLastEl || !historyBody) {
+              console.error("Timer elements not found!");
+              return;
+          }
+
+          const now = Date.now();
+
+          if (!isTiming) {
+              // STARTING
+              isTiming = true;
+              startTime = now;
+
+              clearInterval(timerInterval);
+              timerInterval = setInterval(updateDurationDisplay, 500);
+              updateDurationDisplay();
+
+              clearInterval(timeSinceLastInterval);
+
+              timerButton.textContent = 'Stop Contraction';
+              timerButton.classList.add('timing');
+
+          } else {
+              // STOPPING
+              isTiming = false;
+              const endTime = now;
+              const duration = (endTime - startTime) / 1000;
+
+              clearInterval(timerInterval);
+              currentDurationEl.textContent = formatTime(duration);
+
+              let frequency = null;
+              if (lastStartTime) {
+                  frequency = (startTime - lastStartTime) / 1000;
+              }
+
+              const contractionRecord = {
+                  startTime: new Date(startTime),
+                  duration: duration,
+                  frequency: frequency
+              };
+              contractions.unshift(contractionRecord);
+              updateHistoryTable();
+
+              lastStartTime = startTime;
+              startTime = null;
+
+              clearInterval(timeSinceLastInterval);
+              timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000);
+              updateTimeSinceLastDisplay();
+
+              timerButton.textContent = 'Start Contraction';
+              timerButton.classList.remove('timing');
+          }
+      }
+
+      function handleClearHistory() {
+         // Ensure elements exist before proceeding
+         if (!timerButton || !currentDurationEl || !timeSinceLastEl || !historyBody || !clearHistoryButton) {
+              console.error("Timer elements not found for clearing!");
+              return;
+          }
+          // Use confirm for user action confirmation
+          if (typeof confirm === 'function' && confirm("Are you sure you want to clear the entire history? This cannot be undone.")) {
+              contractions = [];
+              lastStartTime = null;
+              startTime = null;
+              isTiming = false;
+
+              clearInterval(timerInterval);
+              clearInterval(timeSinceLastInterval);
+
+              currentDurationEl.textContent = '00:00';
+              timeSinceLastEl.textContent = '--:--';
+              timerButton.textContent = 'Start Contraction';
+              timerButton.classList.remove('timing');
+
+              updateHistoryTable();
+          } else if (typeof confirm !== 'function') {
+              // Fallback if confirm isn't available (unlikely in browser)
+               contractions = [];
+               lastStartTime = null;
+               startTime = null;
+               isTiming = false;
+               clearInterval(timerInterval);
+               clearInterval(timeSinceLastInterval);
+               currentDurationEl.textContent = '00:00';
+               timeSinceLastEl.textContent = '--:--';
+               timerButton.textContent = 'Start Contraction';
+               timerButton.classList.remove('timing');
+               updateHistoryTable();
+          }
+      }
+
+      // --- Initialization ---
+      // Add event listeners only if the buttons exist
+      if (timerButton) {
+          timerButton.addEventListener('click', handleTimerClick);
+      }
+      if (clearHistoryButton) {
+          clearHistoryButton.addEventListener('click', handleClearHistory);
+      }
+
+      // Initial table render
+      updateHistoryTable();
+
+   })(); // Immediately Invoked Function Expression (IIFE)
+</script>
