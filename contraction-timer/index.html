@@ -168,57 +168,69 @@
 
 <style>
      
-    .contraction-timer-body {  
-        font-family: sans-serif;
-        line-height: 1.6;
-        margin: 0;  
-        background-color: #f4f4f4;
-        color: #333;
-    }
-    .contraction-timer-container {  
+    .contraction-timer-container {
         max-width: 700px;
-        margin: 20px auto;  
+        margin: 20px auto;
         background: #fff;
         padding: 30px;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        font-family: sans-serif;
+        line-height: 1.6;
+        color: #333;  
     }
-    .contraction-timer-container h2 {  
-         text-align: center;
-         color: #5a4fcf;
-         margin-top: 0;  
+    .contraction-timer-container h2 {
+        text-align: center;
+        color: #333 !important;  
+        margin-top: 0;
+        margin-bottom: 1em;
     }
     .timer-controls {
         text-align: center;
         margin-bottom: 30px;
     }
-    #timerButton {  
-        padding: 15px 30px;
-        font-size: 1.2em;
+    .timer-display p {
+        margin: 5px 0;
+        color: #333 !important;  
+        font-size: 1.1em;
+    }
+    .timer-display span {
+        font-weight: bold;
+        color: #333;  
+        margin-left: 5px;  
+    }
+      
+    #timerButton, #saveHistoryButton, #clearHistoryButton {
+        padding: 10px 20px;  
+        font-size: 1.1em;  
         cursor: pointer;
         border: none;
         border-radius: 5px;
-        background-color: #28a745;  
         color: white;
         transition: background-color 0.3s ease;
+        margin: 5px;  
+    }
+    #timerButton {
+        padding: 15px 30px;  
+        font-size: 1.2em;
+        background-color: #28a745;  
     }
     #timerButton.timing {
         background-color: #dc3545;  
     }
-    #timerButton:hover {
-        opacity: 0.9;
+    #saveHistoryButton {
+        background-color: #007bff;  
     }
-    .timer-display {
-        margin-top: 20px;
-        font-size: 1.1em;
+     #saveHistoryButton:hover {
+        background-color: #0056b3;
     }
-    .timer-display p {
-        margin: 5px 0;
+    #clearHistoryButton {
+        background-color: #6c757d;  
     }
-    .timer-display span {
-        font-weight: bold;
-        color: #5a4fcf;
-    }
+     #clearHistoryButton:hover {
+        background-color: #5a6268;
+     }
+      
     #historyTable {
         width: 100%;
         border-collapse: collapse;
@@ -228,34 +240,32 @@
         border: 1px solid #ddd;
         padding: 10px;
         text-align: left;
+        color: #333;  
     }
     #historyTable th {
-        background-color: #e9e7fd;
-        color: #333;
+        background-color: #e9e7fd;  
     }
     #historyTable tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
+        background-color: #f9f9f9;  
     }
-    #clearHistoryButton {
-        display: block;
-        margin: 20px auto 0;
-        padding: 10px 20px;
-        font-size: 1em;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        background-color: #6c757d;
-        color: white;
-        transition: background-color 0.3s ease;
-    }
-     #clearHistoryButton:hover {
-        background-color: #5a6268;
-     }
-     .no-history {
+      
+     .button-section {  
         text-align: center;
-        color: #6c757d;
-        margin-top: 15px;
+        margin-top: 30px;
      }
+     #storageStatus {
+        text-align: center;
+        font-style: italic;
+        font-size: 0.9em;
+        color: #555;
+        margin-top: 15px;
+        min-height: 1.2em;  
+     }
+    .no-history {
+        text-align: center;
+        color: #333;  
+        margin-top: 15px;
+    }
 </style>
 
 <div class="contraction-timer-container">
@@ -264,8 +274,8 @@
     <div class="timer-controls">
         <button id="timerButton">Start Contraction</button>
         <div class="timer-display">
-            <p>Current Duration: <span id="currentDuration">00:00</span></p>
-            <p>Time Since Last Start: <span id="timeSinceLast">--:--</span></p>
+            <p>Current Duration:<span id="currentDuration">00:00</span></p>
+            <p>Time Since Last Start:<span id="timeSinceLast">--:--</span></p>
         </div>
     </div>
 
@@ -280,210 +290,278 @@
         </thead>
         <tbody id="historyBody">
             <tr id="no-history-row">
-               <td colspan="3" class="no-history">No contractions recorded yet.</td>
+               <td colspan="3" class="no-history">No contractions recorded yet. Load saved history or start timing.</td>
             </tr>
         </tbody>
     </table>
-    <button id="clearHistoryButton">Clear History</button>
+
+    <div class="button-section">
+        <button id="saveHistoryButton">Save History</button>
+        <button id="clearHistoryButton">Clear History</button>
+         <p id="storageStatus"></p> </div>
+
 </div>
 
 <script>
-  
-  
-  (function() {
-      
-      
-      
-      
+(function() {
+    
+    const timerButton = document.getElementById('timerButton');
+    const currentDurationEl = document.getElementById('currentDuration');
+    const timeSinceLastEl = document.getElementById('timeSinceLast');
+    const historyBody = document.getElementById('historyBody');
+    const clearHistoryButton = document.getElementById('clearHistoryButton');
+    const saveHistoryButton = document.getElementById('saveHistoryButton'); 
+    const storageStatus = document.getElementById('storageStatus'); 
 
-      
-      const timerButton = document.getElementById('timerButton');
-      const currentDurationEl = document.getElementById('currentDuration');
-      const timeSinceLastEl = document.getElementById('timeSinceLast');
-      const historyBody = document.getElementById('historyBody');
-      const clearHistoryButton = document.getElementById('clearHistoryButton');
-      
-      
-      
+    
+    let isTiming = false;
+    let startTime = null;       
+    let lastStartTime = null;   
+    let timerInterval = null;
+    let timeSinceLastInterval = null;
+    let contractions = [];      
 
-      
-      let isTiming = false;
-      let startTime = null;
-      let lastStartTime = null;
-      let timerInterval = null;
-      let timeSinceLastInterval = null;
-      let contractions = []; 
+    const STORAGE_KEY = 'contractionHistory'; 
 
-      
-      function formatTime(totalSeconds) {
-          if (totalSeconds === null || isNaN(totalSeconds)) return "--:--";
-          const minutes = Math.floor(totalSeconds / 60);
-          const seconds = Math.floor(totalSeconds % 60);
-          return `<span class="math-inline">\{String\(minutes\)\.padStart\(2, '0'\)\}\:</span>{String(seconds).padStart(2, '0')}`;
-      }
+    
+    function saveHistoryToStorage() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(contractions));
+            displayStatus("History saved to browser storage.", 3000); 
+        } catch (e) {
+            console.error("Error saving history to localStorage:", e);
+            displayStatus("Error saving history. Storage might be full or disabled.", 5000);
+        }
+    }
 
-      function formatTimestamp(date) {
-          if (!date) return "N/A";
-          const hours = String(date.getHours()).padStart(2, '0');
-          const minutes = String(date.getMinutes()).padStart(2, '0');
-          const seconds = String(date.getSeconds()).padStart(2, '0');
-          return `<span class="math-inline">\{hours\}\:</span>{minutes}:${seconds}`;
-      }
+    function loadHistoryFromStorage() {
+        const storedHistory = localStorage.getItem(STORAGE_KEY);
+        let loaded = false;
+        if (storedHistory) {
+            try {
+                const parsedHistory = JSON.parse(storedHistory);
+                if (Array.isArray(parsedHistory)) {
+                    contractions = parsedHistory;
+                    loaded = true;
+                } else {
+                    console.error("Stored history is not an array, clearing.");
+                    localStorage.removeItem(STORAGE_KEY); 
+                    contractions = [];
+                }
+            } catch (e) {
+                console.error("Error parsing stored history:", e);
+                localStorage.removeItem(STORAGE_KEY); 
+                contractions = [];
+            }
+        } else {
+            contractions = [];
+        }
+        
+        lastStartTime = contractions.length > 0 ? contractions[0].startTime : null;
+        return loaded; 
+    }
 
-      function updateDurationDisplay() {
-          if (!startTime) return;
-          const now = Date.now();
-          const elapsedSeconds = (now - startTime) / 1000;
-          if (currentDurationEl) currentDurationEl.textContent = formatTime(elapsedSeconds);
-      }
+    
+    function displayStatus(message, durationMs = 0) {
+        if (storageStatus) {
+            storageStatus.textContent = message;
+            if (durationMs > 0) {
+                setTimeout(() => {
+                    if (storageStatus.textContent === message) { 
+                       storageStatus.textContent = '';
+                    }
+                }, durationMs);
+            }
+        }
+    }
 
-      function updateTimeSinceLastDisplay() {
-          if (!lastStartTime) {
-               if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
-               return;
-          };
-          const now = Date.now();
-          const elapsedSeconds = (now - lastStartTime) / 1000;
-          if (timeSinceLastEl) timeSinceLastEl.textContent = formatTime(elapsedSeconds);
-      }
+    function formatTime(totalSeconds) {
+        if (totalSeconds === null || isNaN(totalSeconds)) return "--:--";
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = Math.floor(totalSeconds % 60);
+        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
 
-      function updateHistoryTable() {
-          if (!historyBody) return; 
+    
+    function formatTimestamp(timestamp) {
+        if (!timestamp || isNaN(timestamp)) return "N/A";
+        const date = new Date(timestamp);
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        return `${hours}:${minutes}:${seconds}`;
+    }
 
-          
-          historyBody.innerHTML = '';
+    function updateDurationDisplay() {
+        if (!startTime) return;
+        const now = Date.now();
+        const elapsedSeconds = (now - startTime) / 1000;
+        if (currentDurationEl) currentDurationEl.textContent = formatTime(elapsedSeconds);
+    }
 
-          if (contractions.length === 0) {
-               
-               const row = historyBody.insertRow();
-               const cell = row.insertCell();
-               cell.colSpan = 3;
-               cell.className = 'no-history'; 
-               cell.textContent = 'No contractions recorded yet.';
-          } else {
-              contractions.forEach((contraction, index) => {
-                  const row = historyBody.insertRow();
+    function updateTimeSinceLastDisplay() {
+        if (!lastStartTime) {
+            if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
+            return;
+        };
+        const now = Date.now();
+        const elapsedSeconds = (now - lastStartTime) / 1000;
+        if (timeSinceLastEl) timeSinceLastEl.textContent = formatTime(elapsedSeconds);
+    }
 
-                  const cellStartTime = row.insertCell();
-                  const cellDuration = row.insertCell();
-                  const cellFrequency = row.insertCell();
+    function updateHistoryTable() {
+        if (!historyBody) return;
+        historyBody.innerHTML = ''; 
 
-                  cellStartTime.textContent = formatTimestamp(contraction.startTime);
-                  cellDuration.textContent = formatTime(contraction.duration);
-                  cellFrequency.textContent = index === 0 ? "N/A" : formatTime(contraction.frequency);
-              });
-          }
-      }
+        if (contractions.length === 0) {
+            const row = historyBody.insertRow();
+            const cell = row.insertCell();
+            cell.colSpan = 3;
+            cell.className = 'no-history';
+            
+             if (localStorage.getItem(STORAGE_KEY)) {
+                 cell.textContent = 'History empty. Load saved history or start timing.';
+             } else {
+                 cell.textContent = 'No contractions recorded yet.';
+             }
 
-      
-      function handleTimerClick() {
-          
-          if (!timerButton || !currentDurationEl || !timeSinceLastEl || !historyBody) {
-              console.error("Timer elements not found!");
-              return;
-          }
+        } else {
+            contractions.forEach((contraction, index) => {
+                const row = historyBody.insertRow();
+                const cellStartTime = row.insertCell();
+                const cellDuration = row.insertCell();
+                const cellFrequency = row.insertCell();
 
-          const now = Date.now();
+                
+                cellStartTime.textContent = formatTimestamp(contraction.startTime);
+                cellDuration.textContent = formatTime(contraction.duration);
+                cellFrequency.textContent = index === (contractions.length - 1) ? "N/A" : formatTime(contraction.frequency);
+                 
+                 
+                 
+                 
+                 cellFrequency.textContent = contraction.frequency === null ? "N/A" : formatTime(contraction.frequency);
 
-          if (!isTiming) {
-              
-              isTiming = true;
-              startTime = now;
+            });
+        }
+    }
 
-              clearInterval(timerInterval);
-              timerInterval = setInterval(updateDurationDisplay, 500);
-              updateDurationDisplay();
+    
+    function handleTimerClick() {
+        if (!timerButton || !currentDurationEl || !timeSinceLastEl || !historyBody) return;
+        const now = Date.now();
 
-              clearInterval(timeSinceLastInterval);
+        if (!isTiming) {
+            
+            isTiming = true;
+            startTime = now;
+            clearInterval(timerInterval);
+            timerInterval = setInterval(updateDurationDisplay, 500);
+            updateDurationDisplay();
+            clearInterval(timeSinceLastInterval);
+            timerButton.textContent = 'Stop Contraction';
+            timerButton.classList.add('timing');
+        } else {
+            
+            isTiming = false;
+            const endTime = now;
+            const duration = (endTime - startTime) / 1000;
+            clearInterval(timerInterval);
+            currentDurationEl.textContent = formatTime(duration);
 
-              timerButton.textContent = 'Stop Contraction';
-              timerButton.classList.add('timing');
+            let frequency = null;
+            if (lastStartTime) {
+                frequency = (startTime - lastStartTime) / 1000;
+            }
 
-          } else {
-              
-              isTiming = false;
-              const endTime = now;
-              const duration = (endTime - startTime) / 1000;
+            const contractionRecord = {
+                startTime: startTime, 
+                duration: duration,
+                frequency: frequency
+            };
+            contractions.unshift(contractionRecord); 
+            updateHistoryTable();
+            
 
-              clearInterval(timerInterval);
-              currentDurationEl.textContent = formatTime(duration);
+            lastStartTime = startTime;
+            startTime = null;
+            clearInterval(timeSinceLastInterval);
+            timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000);
+            updateTimeSinceLastDisplay();
+            timerButton.textContent = 'Start Contraction';
+            timerButton.classList.remove('timing');
+        }
+    }
 
-              let frequency = null;
-              if (lastStartTime) {
-                  frequency = (startTime - lastStartTime) / 1000;
-              }
+    function handleSaveHistoryClick() {
+        if (contractions.length === 0) {
+             displayStatus("No history to save.", 3000);
+             return;
+        }
+        
+        if (confirm("Save contraction history?\n\nThis will store the current history list in your browser's local storage for your next visit.\nData is NOT sent anywhere else.")) {
+            saveHistoryToStorage(); 
+        }
+    }
 
-              const contractionRecord = {
-                  startTime: new Date(startTime),
-                  duration: duration,
-                  frequency: frequency
-              };
-              contractions.unshift(contractionRecord);
-              updateHistoryTable();
+    function handleClearHistoryClick() {
+        if (!clearHistoryButton) return;
 
-              lastStartTime = startTime;
-              startTime = null;
+        let confirmMsg = "Are you sure you want to clear the current history list?";
+        let historyIsSaved = localStorage.getItem(STORAGE_KEY) !== null;
 
-              clearInterval(timeSinceLastInterval);
-              timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000);
-              updateTimeSinceLastDisplay();
+        
+        if (contractions.length === 0 && !historyIsSaved) {
+            displayStatus("History is already empty.", 3000);
+            return;
+        }
 
-              timerButton.textContent = 'Start Contraction';
-              timerButton.classList.remove('timing');
-          }
-      }
+        
+        if (historyIsSaved) {
+            confirmMsg += "\n\nThis will ALSO delete any previously saved history from your browser storage.";
+        }
 
-      function handleClearHistory() {
-         
-         if (!timerButton || !currentDurationEl || !timeSinceLastEl || !historyBody || !clearHistoryButton) {
-              console.error("Timer elements not found for clearing!");
-              return;
-          }
-          
-          if (typeof confirm === 'function' && confirm("Are you sure you want to clear the entire history? This cannot be undone.")) {
-              contractions = [];
-              lastStartTime = null;
-              startTime = null;
-              isTiming = false;
+        if (confirm(confirmMsg)) {
+            contractions = [];
+            lastStartTime = null;
+            startTime = null;
+            isTiming = false; 
 
-              clearInterval(timerInterval);
-              clearInterval(timeSinceLastInterval);
+            clearInterval(timerInterval);
+            clearInterval(timeSinceLastInterval);
 
-              currentDurationEl.textContent = '00:00';
-              timeSinceLastEl.textContent = '--:--';
-              timerButton.textContent = 'Start Contraction';
-              timerButton.classList.remove('timing');
+            
+            if(currentDurationEl) currentDurationEl.textContent = '00:00';
+            if(timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
+            if(timerButton) {
+                 timerButton.textContent = 'Start Contraction';
+                 timerButton.classList.remove('timing');
+            }
 
-              updateHistoryTable();
-          } else if (typeof confirm !== 'function') {
-              
-               contractions = [];
-               lastStartTime = null;
-               startTime = null;
-               isTiming = false;
-               clearInterval(timerInterval);
-               clearInterval(timeSinceLastInterval);
-               currentDurationEl.textContent = '00:00';
-               timeSinceLastEl.textContent = '--:--';
-               timerButton.textContent = 'Start Contraction';
-               timerButton.classList.remove('timing');
-               updateHistoryTable();
-          }
-      }
+            
+            if (historyIsSaved) {
+                 localStorage.removeItem(STORAGE_KEY);
+            }
+            updateHistoryTable();
+            displayStatus("History cleared.", 3000);
+        }
+    }
 
-      
-      
-      if (timerButton) {
-          timerButton.addEventListener('click', handleTimerClick);
-      }
-      if (clearHistoryButton) {
-          clearHistoryButton.addEventListener('click', handleClearHistory);
-      }
+    
+    if (loadHistoryFromStorage()) { 
+       displayStatus("Loaded previously saved history.", 3000); 
+    }
 
-      
-      updateHistoryTable();
+    
+    if (timerButton) timerButton.addEventListener('click', handleTimerClick);
+    if (clearHistoryButton) clearHistoryButton.addEventListener('click', handleClearHistoryClick);
+    if (saveHistoryButton) saveHistoryButton.addEventListener('click', handleSaveHistoryClick); 
 
-   })(); 
+    
+    updateHistoryTable();
+    updateTimeSinceLastDisplay(); 
+
+})();
 </script>
 <p><strong>Disclaimer:</strong> This tool is for informational purposes only and does not replace professional medical advice. Consult your healthcare provider regarding your contractions.</p>
 
