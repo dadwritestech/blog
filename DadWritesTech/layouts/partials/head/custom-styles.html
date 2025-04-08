@@ -1,5 +1,5 @@
 {{ range .Site.Params.customCSS }}
-  {{ if $.Site.IsServer }}
+  {{ if hugo.IsServer }}
     {{ $styles := resources.Get . }}
     {{ if not $styles }}
       {{ errorf "Custom CSS file not found: %s" . }}
@@ -18,7 +18,7 @@
 
 {{ range .Site.Params.customSCSS }}
   {{/* We don't change the targetPath because it's transparent to users */}}
-  {{ if $.Site.IsServer }}
+  {{ if hugo.IsServer }}
     {{ $cssOpts := (dict "enableSourceMap" true ) }}
     {{ $styles := resources.Get . | toCSS $cssOpts }}
     {{ if not $styles }}
