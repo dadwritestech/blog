@@ -3,7 +3,7 @@ title = "Dad Writes Tech"
 theme = "hugo-coder"
 languageCode = "en"
 defaultContentLanguage = "en"
-paginate = 6
+pagerSize = 6
 enableEmoji = true
 # Enable Disqus comments
 # disqusShortname = "yourdiscussshortname"
