@@ -1,6 +1,6 @@
 +++
 title = "About"
-description = "A lil bit bout me self"
+description = "A lil bit about my self"
 date = "2024-01-29"
 url= "/about"
 +++
