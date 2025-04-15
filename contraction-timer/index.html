@@ -423,12 +423,9 @@
 </div>
 
 <script>
-    (function () {
-        console.log("SCRIPT: IIFE Start"); 
-
+    (function() {
         
         const timerButton = document.getElementById('timerButton');
-        console.log("SCRIPT: timerButton element:", timerButton); 
         const currentDurationEl = document.getElementById('currentDuration');
         const timeSinceLastEl = document.getElementById('timeSinceLast');
         const historyBody = document.getElementById('historyBody');
@@ -438,17 +435,17 @@
         const exportHistoryButton = document.getElementById('exportHistoryButton'); 
         const importDataArea = document.getElementById('importDataArea');         
         const importHistoryButton = document.getElementById('importHistoryButton'); 
-
+    
         
         let isTiming = false;
-        let startTime = null;
-        let lastStartTime = null;
+        let startTime = null;       
+        let lastStartTime = null;   
         let timerInterval = null;
         let timeSinceLastInterval = null;
-        let contractions = [];
-
+        let contractions = [];      
+    
         const STORAGE_KEY = 'contractionHistory';
-
+    
         
         function saveHistoryToStorage() {
             try {
@@ -459,14 +456,14 @@
                 displayStatus("Error saving history.", 5000);
             }
         }
-
+    
         function loadHistoryFromStorage() {
             const storedHistory = localStorage.getItem(STORAGE_KEY);
             let loaded = false;
             if (storedHistory) {
                 try {
                     const parsedHistory = JSON.parse(storedHistory);
-                    if (isValidHistoryData(parsedHistory)) { 
+                    if (isValidHistoryData(parsedHistory)) {
                         contractions = parsedHistory;
                         loaded = true;
                     } else {
@@ -485,35 +482,73 @@
             lastStartTime = contractions.length > 0 ? contractions[0].startTime : null;
             return loaded;
         }
-
-        
+    
         function isValidHistoryData(data) {
             if (!Array.isArray(data)) return false;
-            
             return data.every(item =>
                 typeof item === 'object' && item !== null &&
-                typeof item.startTime === 'number' && 
+                typeof item.startTime === 'number' &&
                 typeof item.duration === 'number' &&
                 (typeof item.frequency === 'number' || item.frequency === null)
             );
         }
-
+    
         
-        function displayStatus(message, durationMs = 0) {   }
-        function formatTime(totalSeconds) {   }
-        function formatTimestamp(timestamp) {   }
-        function updateDurationDisplay() {   }
-        function updateTimeSinceLastDisplay() {   }
-        function updateHistoryTable() {  
+        function displayStatus(message, durationMs = 0) {
+            if (storageStatus) {
+                storageStatus.textContent = message;
+                if (durationMs > 0) {
+                    setTimeout(() => {
+                        if (storageStatus.textContent === message) {
+                           storageStatus.textContent = '';
+                        }
+                    }, durationMs);
+                }
+            }
+        }
+    
+        function formatTime(totalSeconds) {
+            if (totalSeconds === null || isNaN(totalSeconds)) return "--:--";
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = Math.floor(totalSeconds % 60);
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+    
+        function formatTimestamp(timestamp) {
+            if (!timestamp || isNaN(timestamp)) return "N/A";
+            const date = new Date(timestamp);
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            return `${hours}:${minutes}:${seconds}`;
+        }
+    
+        function updateDurationDisplay() {
+            if (!startTime) return;
+            const now = Date.now();
+            const elapsedSeconds = (now - startTime) / 1000;
+            if (currentDurationEl) currentDurationEl.textContent = formatTime(elapsedSeconds);
+        }
+    
+        function updateTimeSinceLastDisplay() {
+            if (!lastStartTime) {
+                if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
+                return;
+            };
+            const now = Date.now();
+            const elapsedSeconds = (now - lastStartTime) / 1000;
+            if (timeSinceLastEl) timeSinceLastEl.textContent = formatTime(elapsedSeconds);
+        }
+    
+        function updateHistoryTable() {
             if (!historyBody) return;
             historyBody.innerHTML = '';
-
+    
             if (contractions.length === 0) {
                 const row = historyBody.insertRow();
                 const cell = row.insertCell();
                 cell.colSpan = 3;
                 cell.className = 'no-history';
-                
                 cell.textContent = 'No history yet. Start timing, load saved data, or import data.';
             } else {
                 contractions.forEach((contraction, index) => {
@@ -523,48 +558,226 @@
                     const cellFrequency = row.insertCell();
                     cellStartTime.textContent = formatTimestamp(contraction.startTime);
                     cellDuration.textContent = formatTime(contraction.duration);
-                    
-                    
-                    
                     cellFrequency.textContent = contraction.frequency === null ? "N/A" : formatTime(contraction.frequency);
                 });
             }
         }
-
+    
         
         function handleTimerClick() {
-            console.log("SCRIPT: handleTimerClick function CALLED!"); 
-
-            function handleSaveHistoryClick() {   }
-            function handleClearHistoryClick() {   }
-
-            
-
-
-            
-            if (loadHistoryFromStorage()) {
-                displayStatus("Loaded previously saved history.", 3000);
-            }
-
-            
-            if (timerButton) {
-                console.log("SCRIPT: Adding click listener to timerButton."); 
-                timerButton.addEventListener('click', handleTimerClick);
+            if (!timerButton || !currentDurationEl || !timeSinceLastEl || !historyBody) return;
+            const now = Date.now();
+    
+            if (!isTiming) {
+                
+                isTiming = true;
+                startTime = now;
+                clearInterval(timerInterval);
+                timerInterval = setInterval(updateDurationDisplay, 500);
+                updateDurationDisplay();
+                clearInterval(timeSinceLastInterval);
+                timerButton.textContent = 'Stop Contraction';
+                timerButton.classList.add('timing');
             } else {
-                console.error("SCRIPT ERROR: timerButton element not found, cannot add listener!"); 
+                
+                isTiming = false;
+                const endTime = now;
+                const duration = (endTime - startTime) / 1000;
+                clearInterval(timerInterval);
+                currentDurationEl.textContent = formatTime(duration);
+    
+                let frequency = null;
+                if (lastStartTime) {
+                    frequency = (startTime - lastStartTime) / 1000;
+                }
+    
+                const contractionRecord = {
+                    startTime: startTime, 
+                    duration: duration,
+                    frequency: frequency
+                };
+                contractions.unshift(contractionRecord);
+                updateHistoryTable();
+                
+    
+                lastStartTime = startTime;
+                startTime = null;
+                clearInterval(timeSinceLastInterval);
+                timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000);
+                updateTimeSinceLastDisplay();
+                timerButton.textContent = 'Start Contraction';
+                timerButton.classList.remove('timing');
             }
-            if (clearHistoryButton) clearHistoryButton.addEventListener('click', handleClearHistoryClick);
-            if (saveHistoryButton) saveHistoryButton.addEventListener('click', handleSaveHistoryClick);
+        }
+    
+        function handleSaveHistoryClick() {
+            if (contractions.length === 0) {
+                 displayStatus("No history to save.", 3000);
+                 return;
+            }
+            if (confirm("Save contraction history?\n\nThis will store the current history list in your browser's local storage for your next visit.\nData is NOT sent anywhere else.")) {
+                saveHistoryToStorage();
+            }
+        }
+    
+        function handleClearHistoryClick() {
+            if (!clearHistoryButton) return;
+            let confirmMsg = "Are you sure you want to clear the current history list?";
+            let historyIsSaved = localStorage.getItem(STORAGE_KEY) !== null;
+    
+            if (contractions.length === 0 && !historyIsSaved) {
+                displayStatus("History is already empty.", 3000);
+                return;
+            }
+            if (historyIsSaved) {
+                confirmMsg += "\n\nThis will ALSO delete any previously saved history from your browser storage.";
+            }
+    
+            if (confirm(confirmMsg)) {
+                contractions = [];
+                lastStartTime = null;
+                startTime = null;
+                isTiming = false;
+    
+                clearInterval(timerInterval);
+                clearInterval(timeSinceLastInterval);
+    
+                if(currentDurationEl) currentDurationEl.textContent = '00:00';
+                if(timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
+                if(timerButton) {
+                     timerButton.textContent = 'Start Contraction';
+                     timerButton.classList.remove('timing');
+                }
+    
+                if (historyIsSaved) {
+                     localStorage.removeItem(STORAGE_KEY);
+                }
+                updateHistoryTable();
+                displayStatus("History cleared.", 3000);
+            }
+        }
+    
+        
+        function handleExportHistoryClick() {
+            if (contractions.length === 0) {
+                displayStatus("No history to export.", 3000);
+                return;
+            }
+    
             
-
-            
-            updateHistoryTable();
-            updateTimeSinceLastDisplay();
-
-            console.log("SCRIPT: IIFE End"); 
-
-        }) ();
-</script>
+            const choice = prompt("Choose export method:\nType 'D' to Download file\nType 'C' to Copy to clipboard", "D");
+    
+            if (choice === null) {
+                displayStatus("Export cancelled.", 2000);
+                return; 
+            }
+    
+            const choiceUpper = choice.toUpperCase();
+    
+            if (choiceUpper === 'D') {
+                
+                try {
+                    const jsonData = JSON.stringify(contractions, null, 2); 
+                    const blob = new Blob([jsonData], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    const now = new Date();
+                    const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
+                    link.download = `contraction_history_${timestamp}.json`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                    displayStatus("History exported as JSON file.", 3000);
+                } catch (e) {
+                     console.error("Error exporting history to file:", e);
+                     displayStatus("Error exporting history file.", 5000);
+                }
+            } else if (choiceUpper === 'C') {
+                
+                try {
+                    const jsonDataPlain = JSON.stringify(contractions, null, 2); 
+                     
+                     if (navigator.clipboard && navigator.clipboard.writeText) {
+                         navigator.clipboard.writeText(jsonDataPlain).then(() => {
+                            displayStatus("History copied to clipboard.", 3000);
+                         }).catch(err => {
+                            console.error('Clipboard write failed:', err);
+                            
+                             alert("Could not copy automatically. Please manually copy the data below:\n\n" + jsonDataPlain);
+                             displayStatus("History ready in alert box to copy manually.", 5000);
+                         });
+                     } else {
+                          
+                          alert("Please manually copy the data below:\n\n" + jsonDataPlain);
+                          displayStatus("History ready in alert box to copy manually.", 5000);
+                     }
+                } catch (e) {
+                    console.error("Error preparing history for clipboard:", e);
+                    displayStatus("Error copying history.", 5000);
+                }
+            } else {
+                displayStatus("Invalid choice. Please type 'D' or 'C'.", 3000);
+            }
+        }
+    
+        
+        function handleImportHistoryClick() {
+            if (!importDataArea || !importHistoryButton) return;
+            const pastedData = importDataArea.value.trim();
+    
+            if (!pastedData) {
+                displayStatus("Paste exported data into the text area first.", 3000);
+                return;
+            }
+    
+            if (contractions.length > 0) {
+                if (!confirm("Importing will replace your current history list. Continue?")) {
+                    return; 
+                }
+            }
+    
+            try {
+                const parsedData = JSON.parse(pastedData);
+                if (!isValidHistoryData(parsedData)) {
+                     throw new Error("Imported data is not in the expected format (array of contraction records).");
+                }
+    
+                contractions = parsedData;
+                lastStartTime = contractions.length > 0 ? contractions[0].startTime : null;
+    
+                updateHistoryTable();
+                updateTimeSinceLastDisplay();
+                importDataArea.value = '';
+                displayStatus("History imported successfully.", 3000);
+    
+            } catch (e) {
+                console.error("Error importing history:", e);
+                displayStatus(`Import failed: ${e.message}`, 5000);
+            }
+        }
+    
+        
+        let wasHistoryLoaded = loadHistoryFromStorage();
+    
+        
+        if (timerButton) timerButton.addEventListener('click', handleTimerClick);
+        if (clearHistoryButton) clearHistoryButton.addEventListener('click', handleClearHistoryClick);
+        if (saveHistoryButton) saveHistoryButton.addEventListener('click', handleSaveHistoryClick);
+        if (exportHistoryButton) exportHistoryButton.addEventListener('click', handleExportHistoryClick);
+        if (importHistoryButton) importHistoryButton.addEventListener('click', handleImportHistoryClick);
+    
+        
+        updateHistoryTable();
+        updateTimeSinceLastDisplay();
+    
+        if (wasHistoryLoaded) {
+           displayStatus("Loaded previously saved history.", 3000);
+        }
+    
+    })();
+    </script>
 <p><strong>Disclaimer:</strong> This tool is for informational purposes only and does not replace professional medical advice. Consult your healthcare provider regarding your contractions.</p>
 
   </article>
