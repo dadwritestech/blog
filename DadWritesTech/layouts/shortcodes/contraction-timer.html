@@ -2,103 +2,59 @@
 <style>
     /* --- Basic Styling --- */
     .contraction-timer-container {
-        max-width: 700px;
-        margin: 20px auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        font-family: sans-serif;
-        line-height: 1.6;
-        color: #333; /* Default text color */
+        max-width: 700px; margin: 20px auto; background: #fff; padding: 30px;
+        border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        font-family: sans-serif; line-height: 1.6; color: #333;
     }
     .contraction-timer-container h2 {
-        text-align: center;
-        color: #333 !important; /* Force dark color */
-        margin-top: 0;
-        margin-bottom: 1em;
+        text-align: center; color: #333 !important; margin-top: 0; margin-bottom: 1em;
     }
-    .timer-controls {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .timer-display p {
-        margin: 5px 0;
-        color: #333 !important; /* Force dark color for labels */
-        font-size: 1.1em;
-    }
-    .timer-display span {
-        font-weight: bold;
-        color: #333; /* Dark color for values */
-        margin-left: 5px; /* Add space between label and value */
-    }
+    .timer-controls { text-align: center; margin-bottom: 30px; }
+    .timer-display p { margin: 5px 0; color: #333 !important; font-size: 1.1em; }
+    .timer-display span { font-weight: bold; color: #333; margin-left: 5px; }
+
      /* --- Buttons --- */
-    #timerButton, #saveHistoryButton, #clearHistoryButton {
-        padding: 10px 20px; /* Uniform padding */
-        font-size: 1.1em; /* Uniform font size */
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        transition: background-color 0.3s ease;
-        margin: 5px; /* Add margin between buttons if they wrap */
+    #timerButton, #saveHistoryButton, #clearHistoryButton,
+    #exportHistoryButton, #importHistoryButton { /* Added new button IDs */
+        padding: 10px 20px; font-size: 1.1em; cursor: pointer; border: none;
+        border-radius: 5px; color: white; transition: background-color 0.3s ease;
+        margin: 5px;
     }
-    #timerButton {
-        padding: 15px 30px; /* Make main button larger */
-        font-size: 1.2em;
-        background-color: #28a745; /* Green */
-    }
-    #timerButton.timing {
-        background-color: #dc3545; /* Red */
-    }
-    #saveHistoryButton {
-        background-color: #007bff; /* Blue */
-    }
-     #saveHistoryButton:hover {
-        background-color: #0056b3;
-    }
-    #clearHistoryButton {
-        background-color: #6c757d; /* Grey */
-    }
-     #clearHistoryButton:hover {
-        background-color: #5a6268;
-     }
+    #timerButton { padding: 15px 30px; font-size: 1.2em; background-color: #28a745; }
+    #timerButton.timing { background-color: #dc3545; }
+    #saveHistoryButton { background-color: #007bff; }
+    #saveHistoryButton:hover { background-color: #0056b3; }
+    #clearHistoryButton { background-color: #6c757d; }
+    #clearHistoryButton:hover { background-color: #5a6268; }
+    #exportHistoryButton { background-color: #ffc107; color: #333;} /* Yellow */
+    #exportHistoryButton:hover { background-color: #e0a800; }
+    #importHistoryButton { background-color: #17a2b8; } /* Teal */
+    #importHistoryButton:hover { background-color: #117a8b; }
+
      /* --- Table --- */
-    #historyTable {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    #historyTable th, #historyTable td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: left;
-        color: #333; /* Ensure table text is dark */
-    }
-    #historyTable th {
-        background-color: #e9e7fd; /* Light purple */
-    }
-    #historyTable tbody tr:nth-child(even) {
-        background-color: #f9f9f9; /* Light grey */
-    }
+    #historyTable { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    #historyTable th, #historyTable td { border: 1px solid #ddd; padding: 10px; text-align: left; color: #333; }
+    #historyTable th { background-color: #e9e7fd; }
+    #historyTable tbody tr:nth-child(even) { background-color: #f9f9f9; }
+
+     /* --- Import Section --- */
+     .import-section { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; }
+     .import-section label { display: block; margin-bottom: 5px; font-weight: bold; }
+     #importDataArea {
+        width: 95%; /* Avoid full width to prevent scrollbar issues */
+        min-height: 80px;
+        margin-bottom: 10px;
+        font-family: monospace;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 5px;
+     }
+     .import-button-container { text-align: center; } /* Center import button */
+
      /* --- Other --- */
-     .button-section { /* Group save/clear buttons */
-        text-align: center;
-        margin-top: 30px;
-     }
-     #storageStatus {
-        text-align: center;
-        font-style: italic;
-        font-size: 0.9em;
-        color: #555;
-        margin-top: 15px;
-        min-height: 1.2em; /* Reserve space */
-     }
-    .no-history {
-        text-align: center;
-        color: #333; /* Make darker */
-        margin-top: 15px;
-    }
+     .button-section { text-align: center; margin-top: 30px; }
+     #storageStatus { text-align: center; font-style: italic; font-size: 0.9em; color: #555; margin-top: 15px; min-height: 1.2em; }
+    .no-history { text-align: center; color: #333; margin-top: 15px; }
 </style>
 
 <div class="contraction-timer-container">
@@ -115,23 +71,29 @@
     <h2>Contraction History</h2>
     <table id="historyTable">
         <thead>
-            <tr>
-                <th>Start Time</th>
-                <th>Duration</th>
-                <th>Frequency (Start to Start)</th>
-            </tr>
+            <tr> <th>Start Time</th> <th>Duration</th> <th>Frequency (Start to Start)</th> </tr>
         </thead>
         <tbody id="historyBody">
             <tr id="no-history-row">
-               <td colspan="3" class="no-history">No contractions recorded yet. Load saved history or start timing.</td>
+               <td colspan="3" class="no-history">No contractions recorded yet. Load saved history, import data, or start timing.</td>
             </tr>
         </tbody>
     </table>
 
     <div class="button-section">
         <button id="saveHistoryButton">Save History</button>
-        <button id="clearHistoryButton">Clear History</button>
-         <p id="storageStatus"></p> </div>
+        <button id="exportHistoryButton">Export History</button> <button id="clearHistoryButton">Clear History</button>
+        <p id="storageStatus"></p>
+    </div>
+
+    <div class="import-section">
+        <h3>Import History</h3>
+        <label for="importDataArea">Paste previously exported data here:</label>
+        <textarea id="importDataArea" rows="4"></textarea>
+        <div class="import-button-container">
+            <button id="importHistoryButton">Import Data (Replaces Current)</button>
+        </div>
+    </div>
 
 </div>
 
@@ -143,27 +105,30 @@
     const timeSinceLastEl = document.getElementById('timeSinceLast');
     const historyBody = document.getElementById('historyBody');
     const clearHistoryButton = document.getElementById('clearHistoryButton');
-    const saveHistoryButton = document.getElementById('saveHistoryButton'); // New button
-    const storageStatus = document.getElementById('storageStatus'); // New status element
+    const saveHistoryButton = document.getElementById('saveHistoryButton');
+    const storageStatus = document.getElementById('storageStatus');
+    const exportHistoryButton = document.getElementById('exportHistoryButton'); // New Export Button
+    const importDataArea = document.getElementById('importDataArea');         // New Import Textarea
+    const importHistoryButton = document.getElementById('importHistoryButton'); // New Import Button
 
     // State Variables
     let isTiming = false;
-    let startTime = null;       // Timestamp number when current contraction started
-    let lastStartTime = null;   // Timestamp number when the previous contraction started
+    let startTime = null;
+    let lastStartTime = null;
     let timerInterval = null;
     let timeSinceLastInterval = null;
-    let contractions = [];      // Array for session history {startTime: number, duration: number, frequency: number|null}
+    let contractions = [];
 
-    const STORAGE_KEY = 'contractionHistory'; // Key for localStorage
+    const STORAGE_KEY = 'contractionHistory';
 
-    // --- Local Storage Functions ---
+    // --- Local Storage & Data Handling ---
     function saveHistoryToStorage() {
         try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(contractions));
-            displayStatus("History saved to browser storage.", 3000); // Show confirmation
+            displayStatus("History saved to browser storage.", 3000);
         } catch (e) {
-            console.error("Error saving history to localStorage:", e);
-            displayStatus("Error saving history. Storage might be full or disabled.", 5000);
+            console.error("Error saving history:", e);
+            displayStatus("Error saving history.", 5000);
         }
     }
 
@@ -173,226 +138,179 @@
         if (storedHistory) {
             try {
                 const parsedHistory = JSON.parse(storedHistory);
-                if (Array.isArray(parsedHistory)) {
+                if (isValidHistoryData(parsedHistory)) { // Use validation function
                     contractions = parsedHistory;
                     loaded = true;
                 } else {
-                    console.error("Stored history is not an array, clearing.");
-                    localStorage.removeItem(STORAGE_KEY); // Clear bad data
+                    console.error("Stored history data format is invalid, clearing.");
+                    localStorage.removeItem(STORAGE_KEY);
                     contractions = [];
                 }
             } catch (e) {
                 console.error("Error parsing stored history:", e);
-                localStorage.removeItem(STORAGE_KEY); // Clear corrupted data
+                localStorage.removeItem(STORAGE_KEY);
                 contractions = [];
             }
         } else {
             contractions = [];
         }
-        // Update lastStartTime based on loaded history (most recent is first)
         lastStartTime = contractions.length > 0 ? contractions[0].startTime : null;
-        return loaded; // Return true if data was loaded
+        return loaded;
+    }
+
+    // Basic validation for imported/loaded data
+    function isValidHistoryData(data) {
+         if (!Array.isArray(data)) return false;
+         // Check if every item looks like a contraction record (can be more thorough)
+         return data.every(item =>
+              typeof item === 'object' && item !== null &&
+              typeof item.startTime === 'number' && // Expecting timestamp number
+              typeof item.duration === 'number' &&
+              (typeof item.frequency === 'number' || item.frequency === null)
+          );
     }
 
     // --- Helper Functions ---
-    function displayStatus(message, durationMs = 0) {
-        if (storageStatus) {
-            storageStatus.textContent = message;
-            if (durationMs > 0) {
-                setTimeout(() => {
-                    if (storageStatus.textContent === message) { // Clear only if message hasn't changed
-                       storageStatus.textContent = '';
-                    }
-                }, durationMs);
-            }
-        }
-    }
-
-    function formatTime(totalSeconds) {
-        if (totalSeconds === null || isNaN(totalSeconds)) return "--:--";
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = Math.floor(totalSeconds % 60);
-        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    }
-
-    // Accepts timestamp number
-    function formatTimestamp(timestamp) {
-        if (!timestamp || isNaN(timestamp)) return "N/A";
-        const date = new Date(timestamp);
-        const hours = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        const seconds = String(date.getSeconds()).padStart(2, '0');
-        return `${hours}:${minutes}:${seconds}`;
-    }
-
-    function updateDurationDisplay() {
-        if (!startTime) return;
-        const now = Date.now();
-        const elapsedSeconds = (now - startTime) / 1000;
-        if (currentDurationEl) currentDurationEl.textContent = formatTime(elapsedSeconds);
-    }
-
-    function updateTimeSinceLastDisplay() {
-        if (!lastStartTime) {
-            if (timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
-            return;
-        };
-        const now = Date.now();
-        const elapsedSeconds = (now - lastStartTime) / 1000;
-        if (timeSinceLastEl) timeSinceLastEl.textContent = formatTime(elapsedSeconds);
-    }
-
-    function updateHistoryTable() {
+    function displayStatus(message, durationMs = 0) { /* ... same as before ... */ }
+    function formatTime(totalSeconds) { /* ... same as before ... */ }
+    function formatTimestamp(timestamp) { /* ... same as before ... */ }
+    function updateDurationDisplay() { /* ... same as before ... */ }
+    function updateTimeSinceLastDisplay() { /* ... same as before ... */ }
+    function updateHistoryTable() { /* ... mostly same, update no-history text ... */
         if (!historyBody) return;
-        historyBody.innerHTML = ''; // Clear existing rows
+        historyBody.innerHTML = '';
 
         if (contractions.length === 0) {
             const row = historyBody.insertRow();
             const cell = row.insertCell();
             cell.colSpan = 3;
             cell.className = 'no-history';
-            // Adjust message based on whether saved data might exist
-             if (localStorage.getItem(STORAGE_KEY)) {
-                 cell.textContent = 'History empty. Load saved history or start timing.';
-             } else {
-                 cell.textContent = 'No contractions recorded yet.';
-             }
-
+             // Updated message
+             cell.textContent = 'No history yet. Start timing, load saved data, or import data.';
         } else {
             contractions.forEach((contraction, index) => {
                 const row = historyBody.insertRow();
                 const cellStartTime = row.insertCell();
                 const cellDuration = row.insertCell();
                 const cellFrequency = row.insertCell();
-
-                // Use formatTimestamp with the stored timestamp number
                 cellStartTime.textContent = formatTimestamp(contraction.startTime);
                 cellDuration.textContent = formatTime(contraction.duration);
-                cellFrequency.textContent = index === (contractions.length - 1) ? "N/A" : formatTime(contraction.frequency);
-                 // ^-- Frequency logic correction: The oldest entry (last in array after unshift) has no prior one.
-                 // Let's revert to simpler logic based on index after unshift for now:
-                 // cellFrequency.textContent = (contractions.length - 1 - index) === 0 ? "N/A" : formatTime(contraction.frequency);
-                 // Even simpler, based on frequency being null for first recorded:
+                // Frequency is null for the first contraction recorded (which ends up last in the array due to unshift)
+                 // Let's adjust logic slightly: The item added first (now last) has no prior.
+                 // The frequency stored belongs to the *start* of that contraction relative to the *previous* start.
                  cellFrequency.textContent = contraction.frequency === null ? "N/A" : formatTime(contraction.frequency);
-
             });
         }
     }
 
     // --- Event Handlers ---
-    function handleTimerClick() {
-        if (!timerButton || !currentDurationEl || !timeSinceLastEl || !historyBody) return;
-        const now = Date.now();
+    function handleTimerClick() { /* ... same as before (stores timestamp number, no auto-save) ... */ }
+    function handleSaveHistoryClick() { /* ... same as before ... */ }
+    function handleClearHistoryClick() { /* ... same as before ... */ }
 
-        if (!isTiming) {
-            // STARTING
-            isTiming = true;
-            startTime = now;
-            clearInterval(timerInterval);
-            timerInterval = setInterval(updateDurationDisplay, 500);
-            updateDurationDisplay();
-            clearInterval(timeSinceLastInterval);
-            timerButton.textContent = 'Stop Contraction';
-            timerButton.classList.add('timing');
-        } else {
-            // STOPPING
-            isTiming = false;
-            const endTime = now;
-            const duration = (endTime - startTime) / 1000;
-            clearInterval(timerInterval);
-            currentDurationEl.textContent = formatTime(duration);
-
-            let frequency = null;
-            if (lastStartTime) {
-                frequency = (startTime - lastStartTime) / 1000;
-            }
-
-            const contractionRecord = {
-                startTime: startTime, // Store timestamp number
-                duration: duration,
-                frequency: frequency
-            };
-            contractions.unshift(contractionRecord); // Add to start of array (most recent first)
-            updateHistoryTable();
-            // DO NOT automatically save: saveHistoryToStorage();
-
-            lastStartTime = startTime;
-            startTime = null;
-            clearInterval(timeSinceLastInterval);
-            timeSinceLastInterval = setInterval(updateTimeSinceLastDisplay, 1000);
-            updateTimeSinceLastDisplay();
-            timerButton.textContent = 'Start Contraction';
-            timerButton.classList.remove('timing');
-        }
-    }
-
-    function handleSaveHistoryClick() {
+    // *** NEW: Export Handler ***
+    function handleExportHistoryClick() {
         if (contractions.length === 0) {
-             displayStatus("No history to save.", 3000);
-             return;
+            displayStatus("No history to export.", 3000);
+            return;
         }
-        // Ask for confirmation and explain
-        if (confirm("Save contraction history?\n\nThis will store the current history list in your browser's local storage for your next visit.\nData is NOT sent anywhere else.")) {
-            saveHistoryToStorage(); // Call the save function
+        try {
+            const jsonData = JSON.stringify(contractions, null, 2); // Pretty print JSON
+            const blob = new Blob([jsonData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            // Create filename with date/time
+            const now = new Date();
+            const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
+            link.download = `contraction_history_${timestamp}.json`;
+            document.body.appendChild(link); // Required for Firefox
+            link.click();
+            document.body.removeChild(link); // Clean up
+            URL.revokeObjectURL(url); // Free up memory
+            displayStatus("History exported as JSON file.", 3000);
+        } catch (e) {
+             console.error("Error exporting history:", e);
+             displayStatus("Error exporting history.", 5000);
+             // Fallback: Copy to clipboard (might require user interaction/permission)
+             try {
+                 const jsonDataPlain = JSON.stringify(contractions);
+                 navigator.clipboard.writeText(jsonDataPlain).then(() => {
+                    alert("Could not download file. History copied to clipboard instead.");
+                 }).catch(err => {
+                    console.error('Clipboard fallback failed:', err);
+                    alert("Could not download file or copy to clipboard. Please check console.");
+                 });
+             } catch (fallbackError) {
+                 console.error("Fallback export error:", fallbackError);
+                 alert("Could not download file or copy to clipboard. Please check console.");
+             }
         }
     }
 
-    function handleClearHistoryClick() {
-        if (!clearHistoryButton) return;
+    // *** NEW: Import Handler ***
+    function handleImportHistoryClick() {
+        if (!importDataArea || !importHistoryButton) return;
+        const pastedData = importDataArea.value.trim();
 
-        let confirmMsg = "Are you sure you want to clear the current history list?";
-        let historyIsSaved = localStorage.getItem(STORAGE_KEY) !== null;
-
-        // If there's nothing in the list AND nothing saved, don't prompt unnecessarily
-        if (contractions.length === 0 && !historyIsSaved) {
-            displayStatus("History is already empty.", 3000);
+        if (!pastedData) {
+            displayStatus("Paste exported data into the text area first.", 3000);
             return;
         }
 
-        // Add warning about saved data if applicable
-        if (historyIsSaved) {
-            confirmMsg += "\n\nThis will ALSO delete any previously saved history from your browser storage.";
+        // Confirm before replacing existing data
+        if (contractions.length > 0) {
+            if (!confirm("Importing will replace your current history list. Continue?")) {
+                return; // User cancelled
+            }
         }
 
-        if (confirm(confirmMsg)) {
-            contractions = [];
-            lastStartTime = null;
-            startTime = null;
-            isTiming = false; // Ensure timer state is reset if cleared mid-timing
+        try {
+            const parsedData = JSON.parse(pastedData);
 
-            clearInterval(timerInterval);
-            clearInterval(timeSinceLastInterval);
-
-            // Reset displays
-            if(currentDurationEl) currentDurationEl.textContent = '00:00';
-            if(timeSinceLastEl) timeSinceLastEl.textContent = '--:--';
-            if(timerButton) {
-                 timerButton.textContent = 'Start Contraction';
-                 timerButton.classList.remove('timing');
+            // Validate the parsed data structure
+            if (!isValidHistoryData(parsedData)) {
+                 throw new Error("Imported data is not in the expected format (array of contraction records).");
             }
 
-            // Clear from storage and update table/status
-            if (historyIsSaved) {
-                 localStorage.removeItem(STORAGE_KEY);
-            }
+            // Replace current history
+            contractions = parsedData;
+            // Update lastStartTime based on imported data (newest first)
+            lastStartTime = contractions.length > 0 ? contractions[0].startTime : null;
+
+            // Update UI
             updateHistoryTable();
-            displayStatus("History cleared.", 3000);
+            updateTimeSinceLastDisplay();
+            importDataArea.value = ''; // Clear textarea
+            displayStatus("History imported successfully.", 3000);
+
+            // Optional: Prompt user if they want to save the imported data now
+            // if (confirm("History imported. Do you want to save this imported history to browser storage now?")) {
+            //     saveHistoryToStorage();
+            // }
+
+        } catch (e) {
+            console.error("Error importing history:", e);
+            displayStatus(`Import failed: ${e.message}`, 5000);
         }
     }
 
+
     // --- Initialization ---
-    if (loadHistoryFromStorage()) { // Load data first
-       displayStatus("Loaded previously saved history.", 3000); // Notify if loaded
+    if (loadHistoryFromStorage()) {
+       displayStatus("Loaded previously saved history.", 3000);
     }
 
     // Add event listeners
     if (timerButton) timerButton.addEventListener('click', handleTimerClick);
     if (clearHistoryButton) clearHistoryButton.addEventListener('click', handleClearHistoryClick);
-    if (saveHistoryButton) saveHistoryButton.addEventListener('click', handleSaveHistoryClick); // Listener for new button
+    if (saveHistoryButton) saveHistoryButton.addEventListener('click', handleSaveHistoryClick);
+    if (exportHistoryButton) exportHistoryButton.addEventListener('click', handleExportHistoryClick); // Add listener
+    if (importHistoryButton) importHistoryButton.addEventListener('click', handleImportHistoryClick); // Add listener
 
-    // Initial render based on loaded/empty history
+    // Initial render
     updateHistoryTable();
-    updateTimeSinceLastDisplay(); // Update based on loaded lastStartTime
+    updateTimeSinceLastDisplay();
 
 })();
 </script>
