@@ -61,9 +61,9 @@
         <author>
             <name>Dad Writes Tech</name>
         </author>
-        <category label="wifi" term="wifi"/>
+        <category label="Wi-Fi" term="Wi-Fi"/>
         <category label="Tech Guide" term="Tech Guide"/>
-        <category label="home-networking" term="home-networking"/>
+        <category label="Home Networking" term="Home Networking"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Windows 11's Context Menu: A Usability Downgrade? (And My Workaround)]]></title>
