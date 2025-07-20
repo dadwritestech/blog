@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.dad-writes-tech.com/blog</id>
     <title>Dad Writes Tech Blog</title>
-    <updated>2025-07-20T18:42:10.000Z</updated>
+    <updated>2025-07-20T20:27:26.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.dad-writes-tech.com/blog"/>
     <subtitle>Dad Writes Tech Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Stop Counting Page Views. Start Measuring What Matters.]]></title>
         <id>https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters</id>
         <link href="https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters"/>
-        <updated>2025-07-20T18:42:10.000Z</updated>
+        <updated>2025-07-20T20:27:26.000Z</updated>
         <summary type="html"><![CDATA[Engineers live and die by DORA metrics. So why are most documentation teams still talking about page views?]]></summary>
         <content type="html"><![CDATA[<p>Engineers live and die by DORA metrics. It's how they prove their work, how they measure performance, how they get better.</p>
 <p>So why are most documentation teams still talking about page views?</p>
