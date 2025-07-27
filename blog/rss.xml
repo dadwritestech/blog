@@ -4,7 +4,7 @@
         <title>Dad Writes Tech Blog</title>
         <link>https://www.dad-writes-tech.com/blog</link>
         <description>Dad Writes Tech Blog</description>
-        <lastBuildDate>Sun, 27 Jul 2025 12:30:55 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 27 Jul 2025 12:51:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[Stop Counting Page Views. Start Measuring What Matters.]]></title>
             <link>https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters</link>
             <guid>https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters</guid>
-            <pubDate>Sun, 27 Jul 2025 12:30:55 GMT</pubDate>
+            <pubDate>Sun, 27 Jul 2025 12:51:00 GMT</pubDate>
             <description><![CDATA[Engineers live and die by DORA metrics. So why are most documentation teams still talking about page views?]]></description>
             <content:encoded><![CDATA[<p>Engineers live and die by DORA metrics. It's how they prove their work, how they measure performance, how they get better.</p>
 <p>So why are most documentation teams still talking about page views?</p>
@@ -127,12 +127,12 @@
 <li>Historical performance tracking</li>
 <li>Reduced support tickets for API problems</li>
 </ul>]]></content:encoded>
-            <category>techguides</category>
-            <category>api</category>
-            <category>testing</category>
-            <category>postman</category>
-            <category>automation</category>
-            <category>documentation</category>
+            <category>Tech Guides</category>
+            <category>API</category>
+            <category>Testing</category>
+            <category>Postman</category>
+            <category>Automation</category>
+            <category>Documentation</category>
         </item>
         <item>
             <title><![CDATA[Is It Time to Upgrade Your Home Wi-Fi? Understanding Wi-Fi 6, 6E, and 7 in Plain English]]></title>
@@ -277,7 +277,7 @@
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-personal-trainer-fitness-tracker">The Personal Trainer: Fitness Tracker<a href="https://www.dad-writes-tech.com/blog/tech-gadgets-for-the-modern-dad#the-personal-trainer-fitness-tracker" class="hash-link" aria-label="Direct link to The Personal Trainer: Fitness Tracker" title="Direct link to The Personal Trainer: Fitness Tracker">​</a></h3>
 <p>And let's not forget the fitness trackers, like the <strong>Fitbit Charge 5</strong> and <strong>Garmin Venu Sq</strong>, which keep dad on track with his health and fitness goals. These gadgets are the epitome of wearable wellness, offering personalized fitness insights, activity tracking, and health monitoring. They're like having a personal coach, cheerleader, and health expert all rolled into one.</p>
 <p>With these gadgets in his arsenal, dad can effortlessly balance work, play, and family time, making every moment count. Whether it's through the seamless integration of smartwatches, the immersive experience of noise-canceling headphones, the convenience of smart home devices, the vast digital library of e-readers, or the personalized insights from fitness trackers, these tech tools are here to make dad's life not just easier, but truly extraordinary. So here's to the tech-savvy dads out there, navigating the modern world with a little help from their gadget friends!</p>]]></content:encoded>
-            <category>Tech Guides</category>
+            <category>techGuides</category>
         </item>
         <item>
             <title><![CDATA[To Upgrade or Not to Upgrade: The Casual Gamer's Dilemma in 2024]]></title>

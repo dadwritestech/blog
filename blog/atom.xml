@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.dad-writes-tech.com/blog</id>
     <title>Dad Writes Tech Blog</title>
-    <updated>2025-07-27T12:30:55.000Z</updated>
+    <updated>2025-07-27T12:51:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.dad-writes-tech.com/blog"/>
     <subtitle>Dad Writes Tech Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Stop Counting Page Views. Start Measuring What Matters.]]></title>
         <id>https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters</id>
         <link href="https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters"/>
-        <updated>2025-07-27T12:30:55.000Z</updated>
+        <updated>2025-07-27T12:51:00.000Z</updated>
         <summary type="html"><![CDATA[Engineers live and die by DORA metrics. So why are most documentation teams still talking about page views?]]></summary>
         <content type="html"><![CDATA[<p>Engineers live and die by DORA metrics. It's how they prove their work, how they measure performance, how they get better.</p>
 <p>So why are most documentation teams still talking about page views?</p>
@@ -132,12 +132,12 @@
         <author>
             <name>Dad Writes Tech</name>
         </author>
-        <category label="techguides" term="techguides"/>
-        <category label="api" term="api"/>
-        <category label="testing" term="testing"/>
-        <category label="postman" term="postman"/>
-        <category label="automation" term="automation"/>
-        <category label="documentation" term="documentation"/>
+        <category label="Tech Guides" term="Tech Guides"/>
+        <category label="API" term="API"/>
+        <category label="Testing" term="Testing"/>
+        <category label="Postman" term="Postman"/>
+        <category label="Automation" term="Automation"/>
+        <category label="Documentation" term="Documentation"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Is It Time to Upgrade Your Home Wi-Fi? Understanding Wi-Fi 6, 6E, and 7 in Plain English]]></title>
@@ -291,7 +291,7 @@
         <author>
             <name>Dad Writes Tech</name>
         </author>
-        <category label="Tech Guides" term="Tech Guides"/>
+        <category label="techGuides" term="techGuides"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[To Upgrade or Not to Upgrade: The Casual Gamer's Dilemma in 2024]]></title>
