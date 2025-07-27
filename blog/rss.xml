@@ -4,37 +4,10 @@
         <title>Dad Writes Tech Blog</title>
         <link>https://www.dad-writes-tech.com/blog</link>
         <description>Dad Writes Tech Blog</description>
-        <lastBuildDate>Sun, 27 Jul 2025 12:51:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 27 Jul 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
-        <item>
-            <title><![CDATA[Stop Counting Page Views. Start Measuring What Matters.]]></title>
-            <link>https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters</link>
-            <guid>https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters</guid>
-            <pubDate>Sun, 27 Jul 2025 12:51:00 GMT</pubDate>
-            <description><![CDATA[Engineers live and die by DORA metrics. So why are most documentation teams still talking about page views?]]></description>
-            <content:encoded><![CDATA[<p>Engineers live and die by DORA metrics. It's how they prove their work, how they measure performance, how they get better.</p>
-<p>So why are most documentation teams still talking about page views?</p>
-<p>It's a total disconnect. We aren't measuring what actually matters. And as long as documentation is measured with the same flimsy metrics as marketing content, it's going to be treated like it is. An afterthought. A cost center. A team that's easy to cut when times get tough.</p>
-<p>That has to change. The only way forward is to adopt the language of performance and value that the rest of the organization already speaks. We can take example from DevOps playbook.</p>
-<p>Here's my framework for doing just that by translating DORA's Four Keys for a modern, docs-as-code world.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-four-keys-retooled-for-docs">The Four Keys, Retooled for Docs<a href="https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters#the-four-keys-retooled-for-docs" class="hash-link" aria-label="Direct link to The Four Keys, Retooled for Docs" title="Direct link to The Four Keys, Retooled for Docs">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-lead-time-for-changes">1. Lead Time for Changes<a href="https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters#1-lead-time-for-changes" class="hash-link" aria-label="Direct link to 1. Lead Time for Changes" title="Direct link to 1. Lead Time for Changes">​</a></h3>
-<p>In engineering, this is simple: how long it takes to get a code commit into production. For us? It's the clock running from the moment an API changes to the second the new doc is live for a developer to see. This is the metric that exposes just how agile you really are. A long lead time is a trust killer.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-deployment-frequency">2. Deployment Frequency<a href="https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters#2-deployment-frequency" class="hash-link" aria-label="Direct link to 2. Deployment Frequency" title="Direct link to 2. Deployment Frequency">​</a></h3>
-<p>This one's straightforward. How often are you shipping updates? Elite engineering teams do it multiple times a day. If your docs only get updated once a month, they're perceived as a stale archive, not a living tool. Frequency builds faith. It tells developers you are in the trenches with them, keeping pace.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-mean-time-to-recovery-mttr">3. Mean Time to Recovery (MTTR)<a href="https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters#3-mean-time-to-recovery-mttr" class="hash-link" aria-label="Direct link to 3. Mean Time to Recovery (MTTR)" title="Direct link to 3. Mean Time to Recovery (MTTR)">​</a></h3>
-<p>When something breaks in production, MTTR is how long it takes to fix. It's the same for us. When a developer finds a busted code sample or a dangerously misleading paragraph, how fast can you fix it? A low MTTR means you have a resilient, trustworthy system. A high MTTR means a single typo can quietly sabotage developers for weeks. You have to decide which one you are.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-change-failure-rate-cfr">4. Change Failure Rate (CFR)<a href="https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters#4-change-failure-rate-cfr" class="hash-link" aria-label="Direct link to 4. Change Failure Rate (CFR)" title="Direct link to 4. Change Failure Rate (CFR)">​</a></h3>
-<p>What percentage of your doc updates actually make things worse? Every time you ship a change that introduces an error, creates confusion, or needs an immediate hotfix, that's a failure. A high CFR isn't just embarrassing; it's a symptom of a sick process. It results in bad reviews, a disconnect with your audience, or a failure to test your own examples. It's a problem you have to address on priority.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="so-whats-the-point">So, What's the Point?<a href="https://www.dad-writes-tech.com/blog/stop-counting-page-views-start-measuring-what-matters#so-whats-the-point" class="hash-link" aria-label="Direct link to So, What's the Point?" title="Direct link to So, What's the Point?">​</a></h2>
-<p>Look, this isn't about creating new dashboards to impress your manager.</p>
-<p>It's about changing the entire game. It's about fundamentally shifting how documentation is perceived and valued inside a company. When you can walk into a room and show that a lower documentation MTTR directly reduced developer support tickets by 15%, you're no longer talking about budgets. You're talking about impact.</p>
-<p>The data tells a story. And when you have the right data, you can stop defending your team and start proving its value. That's what this is really all about.</p>]]></content:encoded>
-            <category>Tech Guide</category>
-            <category>General</category>
-        </item>
         <item>
             <title><![CDATA[Building API Documentation Tests with Postman Collections: Complete Guide]]></title>
             <link>https://www.dad-writes-tech.com/blog/building-api-documentation-tests-with-postman-collections</link>
@@ -133,6 +106,33 @@
             <category>Postman</category>
             <category>Automation</category>
             <category>Documentation</category>
+        </item>
+        <item>
+            <title><![CDATA[Stop Counting Page Views. Start Measuring What Matters.]]></title>
+            <link>https://www.dad-writes-tech.com/blog/2025/07/20/stop-counting-page-views-start-measuring-what-matters</link>
+            <guid>https://www.dad-writes-tech.com/blog/2025/07/20/stop-counting-page-views-start-measuring-what-matters</guid>
+            <pubDate>Sun, 20 Jul 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Engineers live and die by DORA metrics. So why are most documentation teams still talking about page views?]]></description>
+            <content:encoded><![CDATA[<p>Engineers live and die by DORA metrics. It's how they prove their work, how they measure performance, how they get better.</p>
+<p>So why are most documentation teams still talking about page views?</p>
+<p>It's a total disconnect. We aren't measuring what actually matters. And as long as documentation is measured with the same flimsy metrics as marketing content, it's going to be treated like it is. An afterthought. A cost center. A team that's easy to cut when times get tough.</p>
+<p>That has to change. The only way forward is to adopt the language of performance and value that the rest of the organization already speaks. We can take example from DevOps playbook.</p>
+<p>Here's my framework for doing just that by translating DORA's Four Keys for a modern, docs-as-code world.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-four-keys-retooled-for-docs">The Four Keys, Retooled for Docs<a href="https://www.dad-writes-tech.com/blog/2025/07/20/stop-counting-page-views-start-measuring-what-matters#the-four-keys-retooled-for-docs" class="hash-link" aria-label="Direct link to The Four Keys, Retooled for Docs" title="Direct link to The Four Keys, Retooled for Docs">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-lead-time-for-changes">1. Lead Time for Changes<a href="https://www.dad-writes-tech.com/blog/2025/07/20/stop-counting-page-views-start-measuring-what-matters#1-lead-time-for-changes" class="hash-link" aria-label="Direct link to 1. Lead Time for Changes" title="Direct link to 1. Lead Time for Changes">​</a></h3>
+<p>In engineering, this is simple: how long it takes to get a code commit into production. For us? It's the clock running from the moment an API changes to the second the new doc is live for a developer to see. This is the metric that exposes just how agile you really are. A long lead time is a trust killer.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-deployment-frequency">2. Deployment Frequency<a href="https://www.dad-writes-tech.com/blog/2025/07/20/stop-counting-page-views-start-measuring-what-matters#2-deployment-frequency" class="hash-link" aria-label="Direct link to 2. Deployment Frequency" title="Direct link to 2. Deployment Frequency">​</a></h3>
+<p>This one's straightforward. How often are you shipping updates? Elite engineering teams do it multiple times a day. If your docs only get updated once a month, they're perceived as a stale archive, not a living tool. Frequency builds faith. It tells developers you are in the trenches with them, keeping pace.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-mean-time-to-recovery-mttr">3. Mean Time to Recovery (MTTR)<a href="https://www.dad-writes-tech.com/blog/2025/07/20/stop-counting-page-views-start-measuring-what-matters#3-mean-time-to-recovery-mttr" class="hash-link" aria-label="Direct link to 3. Mean Time to Recovery (MTTR)" title="Direct link to 3. Mean Time to Recovery (MTTR)">​</a></h3>
+<p>When something breaks in production, MTTR is how long it takes to fix. It's the same for us. When a developer finds a busted code sample or a dangerously misleading paragraph, how fast can you fix it? A low MTTR means you have a resilient, trustworthy system. A high MTTR means a single typo can quietly sabotage developers for weeks. You have to decide which one you are.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-change-failure-rate-cfr">4. Change Failure Rate (CFR)<a href="https://www.dad-writes-tech.com/blog/2025/07/20/stop-counting-page-views-start-measuring-what-matters#4-change-failure-rate-cfr" class="hash-link" aria-label="Direct link to 4. Change Failure Rate (CFR)" title="Direct link to 4. Change Failure Rate (CFR)">​</a></h3>
+<p>What percentage of your doc updates actually make things worse? Every time you ship a change that introduces an error, creates confusion, or needs an immediate hotfix, that's a failure. A high CFR isn't just embarrassing; it's a symptom of a sick process. It results in bad reviews, a disconnect with your audience, or a failure to test your own examples. It's a problem you have to address on priority.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="so-whats-the-point">So, What's the Point?<a href="https://www.dad-writes-tech.com/blog/2025/07/20/stop-counting-page-views-start-measuring-what-matters#so-whats-the-point" class="hash-link" aria-label="Direct link to So, What's the Point?" title="Direct link to So, What's the Point?">​</a></h2>
+<p>Look, this isn't about creating new dashboards to impress your manager.</p>
+<p>It's about changing the entire game. It's about fundamentally shifting how documentation is perceived and valued inside a company. When you can walk into a room and show that a lower documentation MTTR directly reduced developer support tickets by 15%, you're no longer talking about budgets. You're talking about impact.</p>
+<p>The data tells a story. And when you have the right data, you can stop defending your team and start proving its value. That's what this is really all about.</p>]]></content:encoded>
+            <category>Tech Guide</category>
+            <category>General</category>
         </item>
         <item>
             <title><![CDATA[Is It Time to Upgrade Your Home Wi-Fi? Understanding Wi-Fi 6, 6E, and 7 in Plain English]]></title>
