@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.19"><meta name="description" content="Skip the spreadsheets. I built a zero-dependency CLI personal finance tracker in Python from scratch — complete with validation, tests, and documentation."><title>I Built a Personal Finance Tracker in Python — Here&#39;s How | DadWritesTech</title><!-- Google Analytics 4 --><script src="https://www.googletagmanager.com/gtag/js?id=G-L1NH30EXTT" async></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L1NH30EXTT');
+    </script><!-- Open Graph / Social --><meta property="og:title" content="I Built a Personal Finance Tracker in Python — Here's How | DadWritesTech"><meta property="og:description" content="Skip the spreadsheets. I built a zero-dependency CLI personal finance tracker in Python from scratch — complete with validation, tests, and documentation."><meta property="og:type" content="website"><meta property="og:image" content="https://www.dad-writes-tech.com/og-image.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Skip the spreadsheets. I built a zero-dependency CLI personal finance tracker in Python from scratch — complete with validation, tests, and documentation."><!-- Dark mode: sync to html class before first paint --><script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script><link rel="stylesheet" href="/_astro/index.DqBqQ-XA.css">
+<style>[data-callout-type]{padding:1rem 1.25rem;margin:1.25rem 0;border-radius:.5rem;border-left:4px solid}[data-callout-title]{font-weight:700;margin-bottom:.25rem;text-transform:capitalize}[data-callout-body]{margin:0}[data-callout-type=info]{background-color:#eff6ff;color:#1e3a8a;border-color:#3b82f6}[data-callout-type=warning]{background-color:#fffbeb;color:#78350f;border-color:#f59e0b}[data-callout-type=note]{background-color:#f8fafc;color:#1e293b;border-color:#94a3b8}[data-callout-type=success]{background-color:#f0fdf4;color:#166534;border-color:#22c55e}[data-callout-type=danger]{background-color:#fef2f2;color:#7f1d1d;border-color:#ef4444}:root.dark [data-callout-type]{background-color:#94a3b81f!important;color:#cbd5e1!important}:root.dark [data-callout-type=info]{background-color:#3b82f626!important;color:#93c5fd!important;border-color:#60a5fa!important}:root.dark [data-callout-type=warning]{background-color:#f59e0b26!important;color:#fcd34d!important;border-color:#fbbf24!important}:root.dark [data-callout-type=success]{background-color:#22c55e26!important;color:#86efac!important;border-color:#4ade80!important}:root.dark [data-callout-type=danger]{background-color:#ef444426!important;color:#fca5a5!important;border-color:#f87171!important}
+</style></head> <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300"> <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50"> <div class="container mx-auto px-4 h-16 flex items-center justify-between"> <a href="/" class="font-bold text-xl tracking-tight">DadWritesTech</a> <div class="flex items-center gap-6 text-sm font-medium"> <!-- Dark mode toggle --> <button id="theme-toggle" type="button" class="p-1 hover:text-blue-600 transition-colors flex items-center gap-2" aria-label="Toggle dark mode"> <svg class="sun-icon w-5 h-5 hidden dark:block text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg> <svg class="moon-icon w-5 h-5 block dark:hidden text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg> </button> <a href="/blog" class="hover:text-blue-600 transition-colors">Blog</a> <a href="/projects" class="hover:text-blue-600 transition-colors">Projects</a> <a href="/tools" class="hover:text-blue-600 transition-colors">Tools</a> <a href="/gaming" class="hover:text-blue-600 transition-colors">Gaming</a> <a href="/contact" class="hover:text-blue-600 transition-colors">Contact</a> </div> </div> </nav> <script>
+      const toggle = document.getElementById('theme-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const dark = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+        });
+      }
+    </script> <main class="container mx-auto px-4 py-12 min-h-screen">  <article class="max-w-3xl mx-auto"> <header class="mb-8 pb-8 border-b border-slate-200 dark:border-slate-800"> <h1 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-slate-100">I Built a Personal Finance Tracker in Python — Here&#39;s How</h1> <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400"> <time datetime="2026-04-21T18:00:00.000Z"> April 21, 2026 </time>  <span>By DadWritesTech</span> </div> <div class="flex flex-wrap gap-2 mt-4"> <span class="px-2 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">#pythonguide</span><span class="px-2 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">#cli</span><span class="px-2 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">#tutorial</span><span class="px-2 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">#productivity</span> </div> </header>  <div class="prose prose-slate dark:prose-invert max-w-none"> <p>If you’re like me, you’ve tried every finance app on the market and ended up going back to a messy Excel sheet. They either feel like overkill for tracking a few categories or they want to link your bank account just so you can see what you spent on coffee last Tuesday.</p>
+<p>So I did what any self-respecting engineer would do: I built my own.</p>
+<p>This is a <strong>zero-dependency Python CLI tool</strong> that lets you track income and expenses from the terminal. No database setup. No config files. No accounts. Just <code>python -m finance_tracker add income 5000 Salary --date 2026-04-01</code> and you’re done.</p>
+<!--truncate-->
+<h2 id="why-a-cli-tool">Why a CLI Tool?</h2>
+<p>Before you roll your eyes — hear me out.</p>
+<p>The terminal is where I live. I don’t want to open a browser, log into another service, and fill out forms. I want to type a command and be done. That’s it.</p>
+<p>Plus, as engineers, we all know that the best tools are the ones you build yourself. Sure, they take longer. But you get exactly what you want, and more importantly, you learn a thing or two along the way.</p>
+<p>This project uses <strong>only the Python standard library</strong>. No <code>pip install</code> required. Here’s what went into it.</p>
+<h2 id="the-architecture">The Architecture</h2>
+<p>I broke the project into five modules, each with a single responsibility:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Module</th><th>Purpose</th></tr></thead><tbody><tr><td><code>models.py</code></td><td>Transaction dataclass with validation</td></tr><tr><td><code>storage.py</code></td><td>JSON-based persistence layer</td></tr><tr><td><code>commands.py</code></td><td>Business logic for add/list/summary</td></tr><tr><td><code>cli.py</code></td><td>Argument parsing with <code>argparse</code></td></tr><tr><td><code>__main__.py</code></td><td>Module entry point</td></tr></tbody></table>
+<p>This separation keeps things clean. The models don’t know about the CLI. The storage doesn’t know about validation. Each piece does one thing well.</p>
+<h2 id="the-transaction-model">The Transaction Model</h2>
+<p>At the heart of the tracker is the <code>Transaction</code> dataclass:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> dataclasses </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> dataclass, field</span></span>
+<span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> datetime </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> date</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">@dataclass</span></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Transaction</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#79B8FF">    type</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">str</span></span>
+<span class="line"><span style="color:#E1E4E8">    category: </span><span style="color:#79B8FF">str</span></span>
+<span class="line"><span style="color:#E1E4E8">    amount: </span><span style="color:#79B8FF">float</span></span>
+<span class="line"><span style="color:#E1E4E8">    date: date </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> field(</span><span style="color:#FFAB70">default_factory</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">date.today)</span></span>
+<span class="line"><span style="color:#E1E4E8">    description: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span></span>
+<span class="line"><span style="color:#79B8FF">    id</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> field(</span><span style="color:#FFAB70">default_factory</span><span style="color:#F97583">=lambda</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">(uuid.uuid4())[:</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">])</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#79B8FF"> __post_init__</span><span style="color:#E1E4E8">(self) -> </span><span style="color:#79B8FF">None</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.type </span><span style="color:#F97583">not</span><span style="color:#F97583"> in</span><span style="color:#E1E4E8"> (</span><span style="color:#9ECBFF">"income"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"expense"</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#F97583">            raise</span><span style="color:#79B8FF"> ValueError</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Type must be 'income' or 'expense'"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.amount </span><span style="color:#F97583">&#x3C;=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">            raise</span><span style="color:#79B8FF"> ValueError</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Amount must be positive"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#F97583"> not</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.category.strip():</span></span>
+<span class="line"><span style="color:#F97583">            raise</span><span style="color:#79B8FF"> ValueError</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Category cannot be empty"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span></code></pre>
+<p>The <code>__post_init__</code> method runs automatic validation — no transaction with a negative amount or empty category can exist. It’s a small thing, but it means the data is always clean.</p>
+<p>Each transaction gets an auto-generated 8-character ID. Not that you need to know it — but it’s there if you ever want to query the raw JSON file.</p>
+<h2 id="persistent-storage-no-database-required">Persistent Storage (No Database Required)</h2>
+<p>I wanted something dead-simple. No SQLite, no PostgreSQL, no cloud sync. Just a JSON file.</p>
+<p>The <code>Storage</code> class handles everything:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Storage</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#79B8FF"> __init__</span><span style="color:#E1E4E8">(self, filepath: Optional[Path] </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> None</span><span style="color:#E1E4E8">) -> </span><span style="color:#79B8FF">None</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> filepath </span><span style="color:#F97583">is</span><span style="color:#79B8FF"> None</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">            filepath </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Path.home() </span><span style="color:#F97583">/</span><span style="color:#9ECBFF"> ".finance_tracker"</span><span style="color:#F97583"> /</span><span style="color:#9ECBFF"> "transactions.json"</span></span>
+<span class="line"><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.filepath </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Path(filepath)</span></span>
+<span class="line"><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">._ensure_storage_exists()</span></span>
+<span class="line"></span></code></pre>
+<p>By default, transactions live at <code>~/.finance_tracker/transactions.json</code>. You can override it with <code>--storage /path/to/file.json</code> if you want something portable.</p>
+<p>The JSON structure is straightforward — just an array of transaction objects:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#79B8FF">    "id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"91c3736f"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "date"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"2026-04-01"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "type"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"income"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "category"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Salary"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "amount"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5000.00</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "description"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Monthly salary"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">]</span></span>
+<span class="line"></span></code></pre>
+<p>If you ever want to back it up, share it, or inspect it, you can just open it in any text editor.</p>
+<h2 id="the-cli">The CLI</h2>
+<p>I used Python’s built-in <code>argparse</code> to build a clean interface with subcommands:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>python -m finance_tracker --help</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>usage: finance_tracker [-h] [--storage STORAGE] {add,list,summary} ...</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Personal Finance Tracker</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Three subcommands, that’s all you need:</p>
+<h3 id="add--record-a-transaction"><code>add</code> — Record a transaction</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">python</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> finance_tracker</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> income</span><span style="color:#79B8FF"> 5000</span><span style="color:#9ECBFF"> Salary</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">    --date</span><span style="color:#9ECBFF"> 2026-04-01</span><span style="color:#79B8FF"> --description</span><span style="color:#9ECBFF"> "Monthly salary"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Transaction</span><span style="color:#9ECBFF"> added</span><span style="color:#9ECBFF"> successfully!</span></span>
+<span class="line"><span style="color:#B392F0">  ID:</span><span style="color:#9ECBFF">       91c3736f</span></span>
+<span class="line"><span style="color:#B392F0">  Date:</span><span style="color:#9ECBFF">     2026-04-01</span></span>
+<span class="line"><span style="color:#B392F0">  Type:</span><span style="color:#9ECBFF">     income</span></span>
+<span class="line"><span style="color:#B392F0">  Category:</span><span style="color:#9ECBFF"> Salary</span></span>
+<span class="line"><span style="color:#B392F0">  Amount:</span><span style="color:#E1E4E8">   $5000</span><span style="color:#9ECBFF">.00</span></span>
+<span class="line"><span style="color:#B392F0">  Description:</span><span style="color:#9ECBFF"> Monthly</span><span style="color:#9ECBFF"> salary</span></span>
+<span class="line"></span></code></pre>
+<h3 id="list--view-your-transactions"><code>list</code> — View your transactions</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">python</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> finance_tracker</span><span style="color:#9ECBFF"> list</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Date</span><span style="color:#9ECBFF">         Type</span><span style="color:#9ECBFF">     Category</span><span style="color:#9ECBFF">            Amount</span><span style="color:#9ECBFF">  Description</span></span>
+<span class="line"><span style="color:#B392F0">----------------------------------------------------------------------</span></span>
+<span class="line"><span style="color:#E1E4E8">[2026-04-21] EXPENSE </span><span style="color:#F97583">|</span><span style="color:#B392F0"> Food</span><span style="color:#79B8FF">              -25.50</span><span style="color:#9ECBFF">  Lunch</span></span>
+<span class="line"><span style="color:#E1E4E8">[2026-04-01] INCOME  </span><span style="color:#F97583">|</span><span style="color:#B392F0"> Salary</span><span style="color:#9ECBFF">           +5000.00</span><span style="color:#9ECBFF">  Monthly</span><span style="color:#9ECBFF"> salary</span></span>
+<span class="line"><span style="color:#B392F0">----------------------------------------------------------------------</span></span>
+<span class="line"><span style="color:#B392F0">Total</span><span style="color:#9ECBFF"> Income:</span><span style="color:#E1E4E8">      $5000</span><span style="color:#9ECBFF">.00</span></span>
+<span class="line"><span style="color:#B392F0">Total</span><span style="color:#9ECBFF"> Expenses:</span><span style="color:#E1E4E8">    $   </span><span style="color:#79B8FF">25.50</span></span>
+<span class="line"><span style="color:#B392F0">Balance:</span><span style="color:#E1E4E8">           $4974</span><span style="color:#9ECBFF">.50</span></span>
+<span class="line"></span></code></pre>
+<p>Filter by type or category, and set a limit on results.</p>
+<h3 id="summary--get-the-big-picture"><code>summary</code> — Get the big picture</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">python</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> finance_tracker</span><span style="color:#9ECBFF"> summary</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">===</span><span style="color:#9ECBFF"> Financial</span><span style="color:#9ECBFF"> Summary</span><span style="color:#9ECBFF"> ===</span></span>
+<span class="line"><span style="color:#B392F0">Total</span><span style="color:#9ECBFF"> Income:</span><span style="color:#E1E4E8">    $   </span><span style="color:#79B8FF">5000.00</span></span>
+<span class="line"><span style="color:#B392F0">Total</span><span style="color:#9ECBFF"> Expenses:</span><span style="color:#E1E4E8">  $     </span><span style="color:#79B8FF">25.50</span></span>
+<span class="line"><span style="color:#B392F0">Balance:</span><span style="color:#E1E4E8">         $   </span><span style="color:#79B8FF">4974.50</span></span>
+<span class="line"><span style="color:#B392F0">Transactions:</span><span style="color:#79B8FF">    2</span></span>
+<span class="line"><span style="color:#9ECBFF">=========================</span></span>
+<span class="line"></span></code></pre>
+<h2 id="testing--because-it-works-on-my-machine-doesnt-cut-it">Testing — Because “It Works on My Machine” Doesn’t Cut It</h2>
+<p>I wrote <strong>29 unit tests</strong> covering every critical path:</p>
+<ul>
+<li>Transaction model validation (invalid types, negative amounts, empty categories)</li>
+<li>Serialization roundtrip (<code>to_dict</code> / <code>from_dict</code>)</li>
+<li>Add command with various inputs</li>
+<li>Storage layer load/save/filter operations</li>
+<li>Summary calculations</li>
+</ul>
+<p>All tests pass with flying colors:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Ran 29 tests in 0.044s</span></span>
+<span class="line"><span>OK</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>I used the built-in <code>unittest</code> framework — no external test dependencies needed. That’s the beauty of this project: everything runs on the standard library, including the test suite.</p>
+<h2 id="how-to-run-it">How to Run It</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Add an income transaction</span></span>
+<span class="line"><span style="color:#B392F0">python</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> finance_tracker</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> income</span><span style="color:#79B8FF"> 5000</span><span style="color:#9ECBFF"> Salary</span><span style="color:#79B8FF"> --date</span><span style="color:#9ECBFF"> 2026-04-01</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Add an expense (date defaults to today)</span></span>
+<span class="line"><span style="color:#B392F0">python</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> finance_tracker</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> expense</span><span style="color:#79B8FF"> 25.50</span><span style="color:#9ECBFF"> Food</span><span style="color:#79B8FF"> --description</span><span style="color:#9ECBFF"> "Lunch"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># List all transactions</span></span>
+<span class="line"><span style="color:#B392F0">python</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> finance_tracker</span><span style="color:#9ECBFF"> list</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Show summary</span></span>
+<span class="line"><span style="color:#B392F0">python</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> finance_tracker</span><span style="color:#9ECBFF"> summary</span></span>
+<span class="line"></span></code></pre>
+<p>The full project is available as a ZIP download below. Just extract it and run <code>python -m finance_tracker</code> from the folder. No installation, no setup, no nonsense.</p>
+<h2 id="whats-next">What’s Next?</h2>
+<p>This is version 1.0 — a solid foundation. Some ideas for future versions:</p>
+<ul>
+<li><strong>Export to CSV</strong> for those spreadsheet loyalists</li>
+<li><strong>Monthly budget categories</strong> with spending alerts</li>
+<li><strong>Recurring transaction templates</strong> (salary, rent, subscriptions)</li>
+<li><strong>Multiple accounts</strong> (cash, card, savings)</li>
+</ul>
+<p>But you know what? It’s already useful. I’ve been using it for my own tracking, and it does exactly what I need: record money in, record money out, see what’s left.</p>
+<h2 id="download">Download</h2>
+<a href="/downloads/personal_finance_tracker.zip" download class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+  Download personal_finance_tracker.zip
+</a>
+<p>The ZIP contains the full source code, tests, and README. Extract it anywhere and start tracking.</p>
+<hr>
+<p>Have questions or ideas? Drop me a message. And if you build something cool on top of it, let me know — I’d love to see what you do with it.</p> </div> </article>  </main> <footer class="border-t border-slate-200 dark:border-slate-800 py-12 bg-slate-50 dark:bg-slate-900/50"> <div class="container mx-auto px-4 text-center text-sm text-slate-500"> <p>&copy; 2026 DadWritesTech. Built with Astro & Tailwind.</p> </div> </footer> </body></html>
