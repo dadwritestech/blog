@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.19"><meta name="description" content="Zero code written by me. A fully playable browser RPG with 8 gyms, a full region, randomized starter selection, real battle mechanics, and a Docker deployment — all from natural language prompts to Claude Code."><title>I Told an AI to Build Me a Pokémon Game. It Did. | DadWritesTech</title><!-- Google Analytics 4 --><script src="https://www.googletagmanager.com/gtag/js?id=G-L1NH30EXTT" async></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L1NH30EXTT');
+    </script><!-- Open Graph / Social --><meta property="og:title" content="I Told an AI to Build Me a Pokémon Game. It Did. | DadWritesTech"><meta property="og:description" content="Zero code written by me. A fully playable browser RPG with 8 gyms, a full region, randomized starter selection, real battle mechanics, and a Docker deployment — all from natural language prompts to Claude Code."><meta property="og:type" content="website"><meta property="og:image" content="https://www.dad-writes-tech.com/og-image.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Zero code written by me. A fully playable browser RPG with 8 gyms, a full region, randomized starter selection, real battle mechanics, and a Docker deployment — all from natural language prompts to Claude Code."><!-- Dark mode: sync to html class before first paint --><script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script><link rel="stylesheet" href="/_astro/index.R-UrXOZa.css">
+<style>[data-callout-type]{padding:1rem 1.25rem;margin:1.25rem 0;border-radius:.5rem;border-left:4px solid}[data-callout-title]{font-weight:700;margin-bottom:.25rem;text-transform:capitalize}[data-callout-body]{margin:0}[data-callout-type=info]{background-color:#eff6ff;color:#1e3a8a;border-color:#3b82f6}[data-callout-type=warning]{background-color:#fffbeb;color:#78350f;border-color:#f59e0b}[data-callout-type=note]{background-color:#f8fafc;color:#1e293b;border-color:#94a3b8}[data-callout-type=success]{background-color:#f0fdf4;color:#166534;border-color:#22c55e}[data-callout-type=danger]{background-color:#fef2f2;color:#7f1d1d;border-color:#ef4444}:root.dark [data-callout-type]{background-color:#94a3b81f!important;color:#cbd5e1!important}:root.dark [data-callout-type=info]{background-color:#3b82f626!important;color:#93c5fd!important;border-color:#60a5fa!important}:root.dark [data-callout-type=warning]{background-color:#f59e0b26!important;color:#fcd34d!important;border-color:#fbbf24!important}:root.dark [data-callout-type=success]{background-color:#22c55e26!important;color:#86efac!important;border-color:#4ade80!important}:root.dark [data-callout-type=danger]{background-color:#ef444426!important;color:#fca5a5!important;border-color:#f87171!important}
+</style></head> <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300"> <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50"> <div class="container mx-auto px-4 h-16 flex items-center justify-between"> <a href="/" class="font-bold text-xl tracking-tight">DadWritesTech</a> <div class="flex items-center gap-6 text-sm font-medium"> <!-- Dark mode toggle --> <button id="theme-toggle" type="button" class="p-1 hover:text-blue-600 transition-colors flex items-center gap-2" aria-label="Toggle dark mode"> <svg class="sun-icon w-5 h-5 hidden dark:block text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg> <svg class="moon-icon w-5 h-5 block dark:hidden text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg> </button> <a href="/blog" class="hover:text-blue-600 transition-colors">Blog</a> <a href="/projects" class="hover:text-blue-600 transition-colors">Projects</a> <a href="/tools" class="hover:text-blue-600 transition-colors">Tools</a> <a href="/gaming" class="hover:text-blue-600 transition-colors">Gaming</a> <a href="/contact" class="hover:text-blue-600 transition-colors">Contact</a> </div> </div> </nav> <script>
+      const toggle = document.getElementById('theme-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const dark = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+        });
+      }
+    </script> <main class="container mx-auto px-4 py-12 min-h-screen">  <article class="max-w-3xl mx-auto"> <header class="mb-8 pb-8 border-b border-slate-200 dark:border-slate-800"> <h1 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-slate-100">I Told an AI to Build Me a Pokémon Game. It Did.</h1> <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400"> <time datetime="2026-06-14T13:00:00.000Z"> June 14, 2026 </time>  <span>By DadWritesTech</span> </div> <div class="flex flex-wrap gap-2 mt-4"> <span class="px-2 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">#ai</span><span class="px-2 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">#gaming</span><span class="px-2 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">#claudecode</span><span class="px-2 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">#tutorial</span><span class="px-2 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">#agentic-ai</span> </div> </header>  <div class="prose prose-slate dark:prose-invert max-w-none"> <p>I’ve been a casual gamer my whole life. I’ve also been a dad who talks about tech for a living. So when I heard people say AI coding assistants could “build anything,” I figured I’d test that claim in the most ridiculous way I could think of.</p>
+<p>I told it to build me a Pokémon game.</p>
+<p>Not a demo. Not a proof-of-concept clone. A real, playable RPG — with its own region, gym leaders, wild encounters, a starter selection screen, a working economy, and a battle engine. The kind of game that takes a team of developers months to build.</p>
+<p>I wrote zero lines of code myself. Here’s what happened.</p>
+<!-- truncate -->
+<h2 id="the-setup">The Setup</h2>
+<p>The tool I used is called <strong>Claude Code</strong> — Anthropic’s agentic coding assistant. It’s not a chatbot in the traditional sense. It doesn’t just answer questions. It reads your files, writes code, runs commands, debugs errors, and iterates — autonomously — based on what you tell it in plain English.</p>
+<p>I gave it a one-liner: <em>“make a Pokémon-style browser RPG.”</em></p>
+<p>Then I just kept talking.</p>
+<hr>
+<h2 id="what-it-built">What It Built</h2>
+<p>The final game — called <strong>The Mosaic</strong> — is a fully playable browser-based Pokémon RPG. Here’s what that actually means in practice:</p>
+<p><strong>A real battle engine.</strong> Under the hood, every fight runs on <strong>Pokémon Showdown</strong> — the same battle simulator used by millions of competitive players. Accurate damage calculations, type matchups, status effects, switching mechanics, all 1025+ Pokémon with their actual moves and stats. I didn’t implement any of that. The AI figured out how to wrap it.</p>
+<p><strong>A full 8-gym region.</strong> Fourteen interconnected maps stretching from Verdant Hollow all the way to Shadowmere — towns, routes, biome-themed wild encounters, Pokémon Centers, shops, and NPC trainers on every route. The maps are big. Route 1 alone has tall grass patches spanning the whole thing.</p>
+<p><strong>Randomized starter selection.</strong> Every new game is different. The server picks three random Pokémon from a pool of 37 three-stage evolution lines and guarantees they don’t share a type. You get a slick animated UI to choose between them. This was a one-sentence request: <em>“every game should be unique, have any 3 Pokémon with 3 evolution stages.”</em></p>
+<p><strong>An adaptive AI opponent.</strong> Gym leaders and trainers use a custom decision brain that scales to your progress. Early gyms make cautious plays. Later gym leaders are aggressive, draft type-counter teams, and punish you for bad switches.</p>
+<p><strong>A full save system.</strong> PostgreSQL-backed saves with Docker Compose deployment. You can continue from the title screen, save anywhere, and it all persists.</p>
+<p><strong>A title screen, Pokédex, Trainer Card, Region Map, Shop UI.</strong> Premium-looking screens, dark glassmorphism aesthetic, animated particle effects. These were all built in a single session from nothing.</p>
+<hr>
+<h2 id="how-the-conversation-actually-went">How the Conversation Actually Went</h2>
+<p>This is the part that I think is important to understand. I wasn’t typing code prompts. I was having a conversation.</p>
+<p>Some of my actual inputs:</p>
+<ul>
+<li><em>“sprites dead on docker”</em></li>
+<li><em>“i notice when entering maps, player is entering random places”</em></li>
+<li><em>“some are not visible, also ensure not same type in 3”</em> (with a screenshot)</li>
+<li><em>“starter comes at level 5, route 1 is really hard”</em></li>
+<li><em>“create full game and story and maps.. routes.. make big routes”</em></li>
+</ul>
+<p>That’s it. That’s the prompting. The AI read the error logs, found the root cause (Nginx wasn’t serving the sprites-master folder), fixed the Docker config, and rebuilt the container — without me asking it to do any of those individual steps.</p>
+<p>The type overlap fix — where it checked for duplicate types before showing starters — it did by querying the Pokémon Showdown data layer directly. I said “no same type” and it figured out <em>how</em> to enforce that from the existing codebase.</p>
+<hr>
+<h2 id="what-this-actually-means">What This Actually Means</h2>
+<p>I want to be honest about something: this isn’t the future of gaming. Professional game developers have nothing to fear from a single dad prompting an AI on a Saturday.</p>
+<p>But here’s what it <em>does</em> mean.</p>
+<p>The gap between “I have an idea” and “there’s a working thing on my screen” has collapsed in a way I didn’t fully believe until I lived it. The conversation I had with Claude Code over a single session produced something I genuinely play. My kids play it. It has bugs. Some screens have rough edges. The overworld movement could be smoother.</p>
+<p>But it works. And I didn’t know TypeScript three months ago.</p>
+<p>The skill that matters now isn’t knowing how to write a database query or configure an Nginx reverse proxy. It’s knowing what you want clearly enough to describe it. That’s a different kind of literacy — and it’s one that anyone can build.</p>
+<hr>
+<h2 id="the-stack-since-youll-ask">The Stack (Since You’ll Ask)</h2>
+<p>For the curious:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Layer</th><th>Tech</th></tr></thead><tbody><tr><td>Battle engine</td><td>Pokémon Showdown (via Node.js)</td></tr><tr><td>Backend</td><td>Node.js + Express + TypeScript</td></tr><tr><td>Frontend</td><td>Vanilla TypeScript + Vite (no framework)</td></tr><tr><td>Database</td><td>PostgreSQL 15</td></tr><tr><td>Deployment</td><td>Docker Compose + Nginx</td></tr><tr><td>Sprites</td><td>PokeAPI sprite repository</td></tr><tr><td>3D assets</td><td>KayKit Adventurers + Kenney Fantasy Town Kit (CC0)</td></tr></tbody></table>
+<p>The whole thing runs on <code>docker-compose up --build</code> and opens in a browser on <code>localhost:8080</code>. No installation, no setup, no accounts.</p>
+<hr>
+<h2 id="try-it-yourself">Try It Yourself</h2>
+<p>The source code is on GitHub: <strong><a href="https://github.com/dadwritestech/the-mosaic">github.com/dadwritestech/the-mosaic</a></strong></p>
+<p>Clone it, run Docker, and pick your starter. The three you get will be completely different from mine.</p>
+<p>This is v1. There’s a lot more I want to add — proper sound effects, move animations, a full Elite Four sequence, mobile controls. But that’s the thing about building this way: the gap between “I want that” and “it exists” keeps getting shorter.</p>
+<hr>
+<p><em>Pokémon and all related names are trademarks of Nintendo, Game Freak, and The Pokémon Company. This is a non-commercial fan project built for educational purposes.</em></p> </div> </article>  </main> <footer class="border-t border-slate-200 dark:border-slate-800 py-12 bg-slate-50 dark:bg-slate-900/50"> <div class="container mx-auto px-4 text-center text-sm text-slate-500"> <p>&copy; 2026 DadWritesTech. Built with Astro & Tailwind.</p> </div> </footer> </body></html>
