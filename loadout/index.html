@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loadout — VRAM planner for local LLMs</title>
+    <script type="module" crossorigin src="/loadout/assets/index-CxYXtOoU.js"></script>
+    <link rel="stylesheet" crossorigin href="/loadout/assets/index-01m_IBCv.css">
+  </head>
+  <body>
+    <div id="app">
+      <aside id="panel">
+        <header id="brand">
+          <h1 class="brand-mark">LOAD<span>OUT</span></h1>
+          <div class="brand-sub">VRAM PLANNER // LOCAL LLMS</div>
+          <div class="hazard"></div>
+        </header>
+        <section id="model-input">
+          <div class="sec-h"><span>01</span> MODEL</div>
+          <input id="hf-url" type="text" placeholder="huggingface.co/…/model.gguf" spellcheck="false" />
+          <div class="model-actions">
+            <button id="hf-load" class="btn btn-primary">FETCH</button>
+            <label class="btn file-btn" for="file-pick">LOCAL FILE<input id="file-pick" type="file" accept=".gguf" /></label>
+          </div>
+          <div id="model-status"></div>
+        </section>
+        <section id="hardware"></section>
+        <section id="settings"></section>
+        <section id="summary"></section>
+        <section id="suggestions"></section>
+        <details id="calibration">
+          <summary><span class="sec-num">05</span> CALIBRATE // llama.cpp log</summary>
+          <textarea id="log-paste" rows="6" placeholder="paste llama.cpp startup log…" spellcheck="false"></textarea>
+          <button id="log-diff" class="btn">COMPARE</button>
+          <div id="diff-out"></div>
+        </details>
+        <footer id="panel-foot">weights exact · kv exact · compute ±15%</footer>
+      </aside>
+      <main id="stage">
+        <canvas id="viz"></canvas>
+        <button id="export-png" class="btn">⤓ EXPORT PNG</button>
+      </main>
+    </div>
+  </body>
+</html>
